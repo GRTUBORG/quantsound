@@ -8,7 +8,6 @@ from asyncio import sleep
 from discord.ext import commands
 from discord.ext.commands import Bot
 from discord.utils import get
-from discord import FFmpegPCMAudio
 
 YDL_OPTIONS = {'format': 'worstaudio/best', 'noplaylist': 'True', 'simulate': 'True', 'preferredquality': '192', 'preferredcodec': 'mp3', 'key': 'FFmpegExtractAudio'}
 FFMPEG_OPTIONS = {'before_options': '-reconnect 1 -reconnect_streamed 1 -reconnect_delay_max 5', 'options': '-vn'}
@@ -39,7 +38,7 @@ async def play(ctx, *, url):
                 URL = info['formats'][0]['url']
         
         vc.play(discord.FFmpegPCMAudio(executable = "/app/vendor/ffmpeg/ffmpeg", source = URL, **FFMPEG_OPTIONS))
-        vc.source = discord.PCMVolumeTransformer(vc.source)
+        vc.source = discord.PCMVolumeTransformer(vc.sourceб , volume = 0.5)
         vc.source.volume = volume
             
 @Bot.command()
