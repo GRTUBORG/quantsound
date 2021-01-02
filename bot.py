@@ -19,7 +19,7 @@ intents = discord.Intents.all()
 Bot = commands.Bot(command_prefix = ["/"], intents = discord.Intents.all())
 
 @Bot.command(aliases = ['p'])
-async def play(ctx, *, arg):
+async def play(ctx, *, url):
     voice_channel = ctx.message.author.voice.channel
     vc = await voice_channel.connect()
     if vc.is_playing():
@@ -30,11 +30,11 @@ async def play(ctx, *, arg):
         correct_search = 'ytsearch:' + url
         if correct_url != correct_url1:
             with YoutubeDL(YDL_OPTIONS) as ydl:
-                info = ydl.extract_info(arg, download = False)
+                info = ydl.extract_info(url, download = False)
                 URL = info['entries'][0]['formats'][0]['url']
         else: 
             with YoutubeDL(YDL_OPTIONS) as ydl:
-                info = ydl.extract_info(arg, download = False)
+                info = ydl.extract_info(url, download = False)
                 URL = info['formats'][0]['url']
         vc.play(discord.FFmpegPCMAudio(executable = "/app/vendor/ffmpeg/ffmpeg", source = URL, **FFMPEG_OPTIONS))
 
