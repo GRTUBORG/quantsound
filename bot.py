@@ -10,10 +10,7 @@ from discord.ext.commands import Bot
 from discord.utils import get
 from discord import FFmpegPCMAudio
 
-os.system('whereis ffmpeg')
-os.system('which ffmpeg')
-
-YDL_OPTIONS = {'format': 'bestaudio', 'noplaylist':'False'}
+YDL_OPTIONS = {'format': 'worstaudio/best', 'noplaylist': 'True', 'simulate': 'True', 'preferredquality': '192', 'preferredcodec': 'mp3', 'key': 'FFmpegExtractAudio'}
 FFMPEG_OPTIONS = {'before_options': '-reconnect 1 -reconnect_streamed 1 -reconnect_delay_max 5', 'options': '-vn'}
 
 youtube_dl.utils.bug_reports_message = lambda: ''
