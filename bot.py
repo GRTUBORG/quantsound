@@ -8,6 +8,7 @@ from asyncio import sleep
 from discord.ext import commands
 from discord.ext.commands import Bot
 from discord.utils import get
+from discord import FFmpegPCMAudio
 
 YDL_OPTIONS = {'format': 'bestaudio', 'noplaylist':'False'}
 FFMPEG_OPTIONS = {'before_options': '-reconnect 1 -reconnect_streamed 1 -reconnect_delay_max 5', 'options': '-vn'}
