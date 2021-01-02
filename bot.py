@@ -18,7 +18,7 @@ intents = discord.Intents.all()
 Bot = commands.Bot(command_prefix = ["/"], intents = discord.Intents.all())
 
 @Bot.command(aliases = ['p'])
-async def play(ctx, *, url):
+async def play(ctx, *, url, volume = 0.5):
     global vc
     voice_channel = ctx.message.author.voice.channel
     vc = await voice_channel.connect()
@@ -39,6 +39,7 @@ async def play(ctx, *, url):
         
         vc.play(discord.FFmpegPCMAudio(executable = "/app/vendor/ffmpeg/ffmpeg", source = URL, **FFMPEG_OPTIONS))
         vc.source = discord.PCMVolumeTransformer(vc.source)
+        voice.source.volume = volume
             
 @Bot.command()
 async def volume(ctx, *, volume: int):
