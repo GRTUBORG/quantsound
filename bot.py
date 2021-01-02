@@ -41,11 +41,6 @@ async def play(ctx, *, url):
         vc.play(discord.FFmpegPCMAudio(executable = "/app/vendor/ffmpeg/ffmpeg", source = URL, **FFMPEG_OPTIONS))
         vc.source = discord.PCMVolumeTransformer(vc.source)
         vc.source.volume = volume
-        while vc.is_playing():
-            await sleep(1)
-        else:
-            if not vc.is_paused():
-                await vc.disconnect()
             
 @Bot.command()
 async def volume(ctx, *, volume: int):
@@ -55,6 +50,26 @@ async def volume(ctx, *, volume: int):
     await asyncio.sleep(5)
     await ctx.message.delete()
     await message.delete()
+
+@Bot.command()
+async def pause(ctx):
+    voice = get(Bot.voice_clients, guild = ctx.guild)
+    if voice and voice.is_playing():
+        voice.pause()
+        message = ctx.message
+        await message.add_reaction('👌')
+    else: 
+        await ctx.send('Приостанавливать нечего!')
+
+@Bot.command()
+async def resume(ctx):
+    voice = get(Bot.voice_clients, guild = ctx.guild)
+    if voice and not voice.is_playing():
+        voice.resume()
+        message = ctx.message
+        await message.add_reaction('👌')
+    else:
+        await ctx.send('Музыка уже играет!')
     
 token = os.environ.get('bot_token')
 Bot.run(str(token))
