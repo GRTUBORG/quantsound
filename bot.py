@@ -10,6 +10,8 @@ from discord.ext.commands import Bot
 from discord.utils import get
 from discord import FFmpegPCMAudio
 
+os.system('whereis ffmpeg')
+
 YDL_OPTIONS = {'format': 'bestaudio', 'noplaylist':'False'}
 FFMPEG_OPTIONS = {'before_options': '-reconnect 1 -reconnect_streamed 1 -reconnect_delay_max 5', 'options': '-vn'}
 
