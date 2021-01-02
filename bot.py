@@ -33,8 +33,9 @@ async def play(ctx, *, arg):
 
         while vc.is_playing():
             await sleep(1)
-        if not vc.is_paused():
-            await vc.disconnect()
+        else:
+            if not vc.is_paused():
+                await vc.disconnect()
             
 token = os.environ.get('bot_token')
 Bot.run(str(token))
