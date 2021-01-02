@@ -39,7 +39,7 @@ async def play(ctx, *, url, volume = 0.5):
         
         vc.play(discord.FFmpegPCMAudio(executable = "/app/vendor/ffmpeg/ffmpeg", source = URL, **FFMPEG_OPTIONS))
         vc.source = discord.PCMVolumeTransformer(vc.source)
-        voice.source.volume = volume
+        vc.source.volume = volume
             
 @Bot.command()
 async def volume(ctx, *, volume: int):
