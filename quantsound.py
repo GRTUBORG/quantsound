@@ -40,7 +40,7 @@ async def play(ctx, *, url, volume = 0.5):
             with YoutubeDL(YDL_OPTIONS) as ydl:
                 info = ydl.extract_info(f'ytsearch:{url}', download = False)
                 URL = info['entries'][0]['formats'][0]['url']
-                title = info['entries']
+                title = info['entries'][0]['title']
         else: 
             key_error = 1
             with YoutubeDL(YDL_OPTIONS) as ydl:
