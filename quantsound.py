@@ -47,17 +47,17 @@ async def play(ctx, *, url, volume = 0.5):
             with YoutubeDL(YDL_OPTIONS) as ydl:
                 info = ydl.extract_info(url, download = False)
                 URL = info['formats'][0]['url']
-                title_url = info['title']
+                title = info['title']
                 id = info['id']
         
         vc.play(discord.FFmpegPCMAudio(executable = "/app/vendor/ffmpeg/ffmpeg", source = URL, **FFMPEG_OPTIONS))
         vc.source = discord.PCMVolumeTransformer(vc.source)
         vc.source.volume = volume
         if key_error == 0:
-            embed = discord.Embed(title = title, url = f'https://www.youtube.com/watch?v={id}')
+            embed = discord.Embed(description = title, url = f'https://www.youtube.com/watch?v={id}')
             await ctx.send(embed = embed)
         else:
-            embed = discord.Embed(title = title_url, url = f'https://www.youtube.com/watch?v={id}')
+            embed = discord.Embed(description = title, url = f'https://www.youtube.com/watch?v={id}')
             await ctx.send(embed = embed)
    
 
