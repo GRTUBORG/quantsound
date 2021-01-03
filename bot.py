@@ -98,7 +98,7 @@ async def stop(ctx):
         await message.add_reaction('👌')
         await ctx.voice_client.disconnect()
  
-@Bot.command
+@Bot.command()
 async def help(ctx):
     embed = discord.Embed(title = 'Help', description = f'Hello, {author.mention}! List of all commands:\n'
                           '• `!help` outputs the help command;\n'
