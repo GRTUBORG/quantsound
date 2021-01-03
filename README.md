@@ -4,3 +4,4 @@
 [![Issues](https://img.shields.io/bitbucket/issues/GRTUBORG/quantprod)](https://github.com/GRTUBORG/quantprod/issues)  
 
 ### Бот относится к проекту quant2020  
+* Небольшой плеер для дискорда, который умеет воспроизводить как обычные аудиодорожки, взятые из видео с ютуба, так и стримы.
