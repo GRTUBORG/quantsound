@@ -41,8 +41,9 @@ async def play(ctx, *, url, volume = 0.5):
         vc.source = discord.PCMVolumeTransformer(vc.source)
         vc.source.volume = volume
         while vc.is_playing():
-            await sleep(120)
+            await sleep(1)
         if not vc.is_paused():
+            await sleep(120)
             await vc.disconnect()
             
 @Bot.command()
