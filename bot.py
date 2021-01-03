@@ -16,6 +16,7 @@ youtube_dl.utils.bug_reports_message = lambda: ''
 
 intents = discord.Intents.all()
 Bot = commands.Bot(command_prefix = ["!"], intents = discord.Intents.all())
+Bot.remove_command('help')
 
 @Bot.event
 async def on_ready():
