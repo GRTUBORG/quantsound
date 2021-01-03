@@ -19,7 +19,7 @@ Bot = commands.Bot(command_prefix = ["!"], intents = discord.Intents.all())
 
 @Bot.event
 async def on_ready():
-    await Bot.change_presence(activity = discord.Activity(type = discord.ActivityType.watching, name = "check !help"))
+    await Bot.change_presence(activity = discord.Activity(type = discord.ActivityType.listening, name = "!help"))
     print('{0.user} в онлайне!'.format(Bot))
     
 @Bot.command(aliases = ['p'])
