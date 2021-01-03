@@ -30,7 +30,7 @@ async def play(ctx, *, url, volume = 0.5):
     voice_channel = ctx.message.author.voice.channel
     vc = await voice_channel.connect()
     if vc.is_playing():
-        await ctx.send(f'{ctx.message.author.mention}, музыка уже проигрывается.')
+        await ctx.send(f'{ctx.message.author.mention}, the music is already playing.')
     else:
         correct_url = url[:8]
         correct_url1 = 'https://'
@@ -61,7 +61,7 @@ async def play(ctx, *, url, volume = 0.5):
 async def volume(ctx, *, volume: int):
     author = ctx.message.author
     ctx.voice_client.source.volume = volume / 100
-    message = await ctx.send(f"{author.mention}, громкость установлена на {volume}%")
+    message = await ctx.send(f"{author.mention}, the volume is set to {volume}%")
     await asyncio.sleep(5)
     await ctx.message.delete()
     await message.delete()
@@ -76,9 +76,9 @@ async def pause(ctx):
             message = ctx.message
             await message.add_reaction('👌')
         else:
-            await ctx.send('Вы не подключены к каналу!')
+            await ctx.send('You are not connected to the channel!')
     else: 
-        await ctx.send('Приостанавливать нечего!')
+        await ctx.send('There is nothing to suspend!')
 
         
 @Bot.command()
@@ -89,7 +89,7 @@ async def resume(ctx):
         message = ctx.message
         await message.add_reaction('👌')
     else:
-        await ctx.send('Музыка уже играет!')
+        await ctx.send('The music is already playing')
 
         
 @Bot.command(aliases = ['leave'])
