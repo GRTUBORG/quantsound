@@ -100,6 +100,7 @@ async def stop(ctx):
  
 @Bot.command()
 async def help(ctx):
+    author = ctx.message.author
     embed = discord.Embed(title = 'Help', description = f'Hello, {author.mention}! List of all commands:\n'
                           '• `!help` outputs the help command;\n'
                           '• `!play` (aliases: `!p`) playback songs/streams. Arguments: the query or the reference;\n'
