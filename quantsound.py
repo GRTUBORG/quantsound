@@ -54,9 +54,9 @@ async def play(ctx, *, url, volume = 0.5):
         vc.source = discord.PCMVolumeTransformer(vc.source)
         vc.source.volume = volume
         if key_error == 0:
-            await ctx.send(f'Playing: {title} ({url})')
+            await ctx.send(f'Playing: {title} (https://www.youtube.com/watch?v={url})')
         else:
-            await ctx.send(f'Playing: {title_url} ({url})')
+            await ctx.send(f'Playing: {title_url} (https://www.youtube.com/watch?v={url})')
    
 
 @Bot.command()
