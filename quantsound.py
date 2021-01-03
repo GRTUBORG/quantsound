@@ -51,7 +51,7 @@ async def play(ctx, *, url, volume = 0.5):
         vc.play(discord.FFmpegPCMAudio(executable = "/app/vendor/ffmpeg/ffmpeg", source = URL, **FFMPEG_OPTIONS))
         vc.source = discord.PCMVolumeTransformer(vc.source)
         vc.source.volume = volume
-        if key_error = 0:
+        if key_error == 0:
             await ctx.send(f'Playing: {title}')
         else:
             await ctx.send(f'Playing: {title_url}')
