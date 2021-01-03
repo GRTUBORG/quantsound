@@ -17,6 +17,11 @@ youtube_dl.utils.bug_reports_message = lambda: ''
 intents = discord.Intents.all()
 Bot = commands.Bot(command_prefix = ["!"], intents = discord.Intents.all())
 
+@Bot.event
+async def on_ready():
+    await Bot.change_presence(activity = discord.Activity(type = discord.ActivityType.watching, name = "check !help"))
+    print('{0.user} в онлайне!'.format(Bot))
+    
 @Bot.command(aliases = ['p'])
 async def play(ctx, *, url, volume = 0.5):
     global vc
