@@ -68,9 +68,12 @@ async def volume(ctx, *, volume: int):
 async def pause(ctx):
     voice = get(Bot.voice_clients, guild = ctx.guild)
     if voice and voice.is_playing():
-        voice.pause()
-        message = ctx.message
-        await message.add_reaction('👌')
+        if vc == voice:
+            voice.pause()
+            message = ctx.message
+            await message.add_reaction('👌')
+        else:
+            await ctx.send('Вы не подключены к каналу!')
     else: 
         await ctx.send('Приостанавливать нечего!')
 
@@ -86,13 +89,14 @@ async def resume(ctx):
         await ctx.send('Музыка уже играет!')
 
         
-@Bot.command()
+@Bot.command(aliases = ['leave'])
 async def stop(ctx):
     voice = get(Bot.voice_clients, guild = ctx.guild)
     if voice:
         message = ctx.message
         await message.add_reaction('👌')
         await ctx.voice_client.disconnect()
-    
+ 
+
 token = os.environ.get('bot_token')
 Bot.run(str(token))
