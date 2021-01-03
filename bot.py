@@ -83,9 +83,11 @@ async def resume(ctx):
         
 @Bot.command()
 async def stop(ctx):
-    message = ctx.message
-    await message.add_reaction('👌')
-    await ctx.voice_client.disconnect()
+    voice = get(Bot.voice_clients, guild = ctx.guild)
+    if voice:
+        message = ctx.message
+        await message.add_reaction('👌')
+        await ctx.voice_client.disconnect()
     
 token = os.environ.get('bot_token')
 Bot.run(str(token))
