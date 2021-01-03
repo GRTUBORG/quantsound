@@ -41,14 +41,14 @@ async def play(ctx, *, url, volume = 0.5):
                 info = ydl.extract_info(f'ytsearch:{url}', download = False)
                 URL = info['entries'][0]['formats'][0]['url']
                 title = info['entries'][0]['title']
-                url = info['entries'][0]['url']
+                url = info['entries'][0]['id']
         else: 
             key_error = 1
             with YoutubeDL(YDL_OPTIONS) as ydl:
                 info = ydl.extract_info(url, download = False)
                 URL = info['formats'][0]['url']
                 title_url = info['title']
-                url = info['url']
+                url = info['id']
         
         vc.play(discord.FFmpegPCMAudio(executable = "/app/vendor/ffmpeg/ffmpeg", source = URL, **FFMPEG_OPTIONS))
         vc.source = discord.PCMVolumeTransformer(vc.source)
