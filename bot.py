@@ -105,7 +105,7 @@ async def help(ctx):
                           '• `!volume` changing the volume. Arguments: integer from 0 to 100;\n'
                           '• `!pause` pause the current playback;\n'
                           '• `!resume` continue playing;\n'
-                          '• `!stop` (aliases: `!leave`) full stop of playback with subsequent disconnection of the bot from the voice channel.'
+                          '• `!stop` (aliases: `!leave`) full stop of playback with subsequent disconnection of the bot from the voice channel.')
     await ctx.send(embed = embed)
     
 token = os.environ.get('bot_token')
