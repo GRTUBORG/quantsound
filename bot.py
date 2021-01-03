@@ -97,6 +97,16 @@ async def stop(ctx):
         await message.add_reaction('👌')
         await ctx.voice_client.disconnect()
  
-
+@Bot.command
+async def help(ctx):
+    embed = discord.Embed(title = 'Help', description = f'Hello, {author.mention}! List of all commands:\n'
+                          '• `!help` outputs the help command;\n'
+                          '• `!play` (aliases: `!p`) playback songs/streams. Arguments: the query or the reference;\n'
+                          '• `!volume` changing the volume. Arguments: integer from 0 to 100;\n'
+                          '• `!pause` pause the current playback;\n'
+                          '• `!resume` continue playing;\n'
+                          '• `!stop` (aliases: `!leave`) full stop of playback with subsequent disconnection of the bot from the voice channel.'
+    await ctx.send(embed = embed)
+    
 token = os.environ.get('bot_token')
 Bot.run(str(token))
