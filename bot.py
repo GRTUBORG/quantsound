@@ -69,6 +69,12 @@ async def resume(ctx):
         await message.add_reaction('👌')
     else:
         await ctx.send('Музыка уже играет!')
+
+@Bot.command()
+async def stop(ctx):
+    message = ctx.message
+    await message.add_reaction('👌')
+    await ctx.voice_client.disconnect()
     
 token = os.environ.get('bot_token')
 Bot.run(str(token))
