@@ -15,11 +15,12 @@ FFMPEG_OPTIONS = {'before_options': '-reconnect 1 -reconnect_streamed 1 -reconne
 youtube_dl.utils.bug_reports_message = lambda: ''
 
 intents = discord.Intents.all()
-Bot = commands.Bot(command_prefix = ["/"], intents = discord.Intents.all())
+Bot = commands.Bot(command_prefix = ["!"], intents = discord.Intents.all())
 
 @Bot.command(aliases = ['p'])
 async def play(ctx, *, url, volume = 0.5):
     global vc
+    
     voice_channel = ctx.message.author.voice.channel
     vc = await voice_channel.connect()
     if vc.is_playing():
@@ -40,12 +41,14 @@ async def play(ctx, *, url, volume = 0.5):
         vc.play(discord.FFmpegPCMAudio(executable = "/app/vendor/ffmpeg/ffmpeg", source = URL, **FFMPEG_OPTIONS))
         vc.source = discord.PCMVolumeTransformer(vc.source)
         vc.source.volume = volume
+        
         while vc.is_playing():
             await sleep(1)
         if not vc.is_paused():
             await sleep(120)
             await vc.disconnect()
-            
+   
+
 @Bot.command()
 async def volume(ctx, *, volume: int):
     author = ctx.message.author
@@ -55,6 +58,7 @@ async def volume(ctx, *, volume: int):
     await ctx.message.delete()
     await message.delete()
 
+    
 @Bot.command()
 async def pause(ctx):
     voice = get(Bot.voice_clients, guild = ctx.guild)
@@ -65,6 +69,7 @@ async def pause(ctx):
     else: 
         await ctx.send('Приостанавливать нечего!')
 
+        
 @Bot.command()
 async def resume(ctx):
     voice = get(Bot.voice_clients, guild = ctx.guild)
@@ -75,6 +80,7 @@ async def resume(ctx):
     else:
         await ctx.send('Музыка уже играет!')
 
+        
 @Bot.command()
 async def stop(ctx):
     message = ctx.message
