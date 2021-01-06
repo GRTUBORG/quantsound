@@ -69,29 +69,27 @@ async def play(ctx, *, url, volume = 0.5):
         
 @Bot.command()
 async def radio(ctx, *, name, volume = 0.5):
+    name = name.lower()
     author = ctx.message.author
     voice_channel = ctx.message.author.voice.channel
-    vc = await voice_channel.connect()
+    vc = await voice_channel.connect(reconnect = True)
 
-    if vc.is_playing():
-        await ctx.send(f'{ctx.message.author.mention}, the music is already playing.')
+    if name == 'европа +' or name == 'europa +' or name == 'европа плюс' or name == 'europa plus':
+        source = 'http://ep128.streamr.ru'
+        embed = discord.Embed(description = f'Now playing: [Europa +](https://europaplus.ru) [{author.mention}]', color = 0xbc03ff)
+        await ctx.send(embed = embed)
+
+    elif name == 'радио рекорд' or name == 'radio record' or name == 'радио record' or name == 'record':
+        source = 'http://air2.radiorecord.ru:805/rr_320'
+        embed = discord.Embed(description = f'Now playing: [Radio Record](https://www.radiorecord.ru) [{author.mention}]', color = 0xbc03ff)
+        await ctx.send(embed = embed)
+
     else:
-        if name.lower == 'европа +' or 'europa +' or 'европа плюс' or 'europa plus':
-            vc.play(discord.FFmpegPCMAudio(executable = "/app/vendor/ffmpeg/ffmpeg", source = 'http://ep128.streamr.ru', **FFMPEG_OPTIONS))
-            vc.source = discord.PCMVolumeTransformer(vc.source)
-            vc.source.volume = volume
+        await ctx.send('Check the request is correct!')
 
-            embed = discord.Embed(description = f'Now playing: [Europa +](https://europaplus.ru) [{author.mention}]', color = 0xbc03ff)
-            await ctx.send(embed = embed)
-        elif name.lower == 'радио рекорд' or 'radio record' or 'радио record' or 'record':
-            vc.play(discord.FFmpegPCMAudio(executable = "/app/vendor/ffmpeg/ffmpeg", source = 'http://air2.radiorecord.ru:805/rr_320', **FFMPEG_OPTIONS))
-            vc.source = discord.PCMVolumeTransformer(vc.source)
-            vc.source.volume = volume
-
-            embed = discord.Embed(description = f'Now playing: [Radio Record](https://www.radiorecord.ru) [{author.mention}]', color = 0xbc03ff)
-            await ctx.send(embed = embed)
-        else:
-            await ctx.send('Check the request is correct!')
+    vc.play(discord.FFmpegPCMAudio(executable = "/usr/bin/ffmpeg", source = source, **FFMPEG_OPTIONS))
+    vc.source = discord.PCMVolumeTransformer(vc.source)
+    vc.source.volume = volume
 
             
 @Bot.command()
