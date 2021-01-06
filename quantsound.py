@@ -18,11 +18,14 @@ intents = discord.Intents.all()
 Bot = commands.Bot(command_prefix = ["!"], intents = discord.Intents.all())
 Bot.remove_command('help')
 
+
+
 @Bot.event
 async def on_ready():
     await Bot.change_presence(activity = discord.Activity(type = discord.ActivityType.listening, name = "!help"))
     print('{0.user} в онлайне!'.format(Bot))
-    
+ 
+
 @Bot.command(aliases = ['p'])
 async def play(ctx, *, url, volume = 0.5):
     global vc
@@ -59,8 +62,10 @@ async def play(ctx, *, url, volume = 0.5):
         embed = discord.Embed(description = f'Now playing: [{title}](https://www.youtube.com/watch?v={id}) [{author.mention}]')
         await ctx.send(embed = embed)
 
+        
 @Bot.command()
 async def radio(ctx, *, name, volume = 0.5):
+    author = ctx.message.author
     voice_channel = ctx.message.author.voice.channel
     vc = await voice_channel.connect()
 
@@ -72,18 +77,19 @@ async def radio(ctx, *, name, volume = 0.5):
             vc.source = discord.PCMVolumeTransformer(vc.source)
             vc.source.volume = volume
 
-            embed = discord.Embed(description = 'Now playing: [Europa +](https://europaplus.ru)')
+            embed = discord.Embed(description = f'Now playing: [Europa +](https://europaplus.ru) [{author.mention}]')
             await ctx.send(embed = embed)
         elif name.lower == 'радио рекорд' or 'radio record' or 'радио record' or 'record':
             vc.play(discord.FFmpegPCMAudio(executable = "/app/vendor/ffmpeg/ffmpeg", source = 'http://air2.radiorecord.ru:805/rr_320', **FFMPEG_OPTIONS))
             vc.source = discord.PCMVolumeTransformer(vc.source)
             vc.source.volume = volume
 
-            embed = discord.Embed(description = 'Now playing: [Radio Record](https://www.radiorecord.ru)')
+            embed = discord.Embed(description = f'Now playing: [Radio Record](https://www.radiorecord.ru) [{author.mention}]')
             await ctx.send(embed = embed)
         else:
-            await ctx.send('Проверь правильность запроса!')
+            await ctx.send('Check the request is correct!')
 
+            
 @Bot.command()
 async def volume(ctx, *, volume: int):
     author = ctx.message.author
@@ -127,17 +133,20 @@ async def stop(ctx):
         await message.add_reaction('👌')
         await ctx.voice_client.disconnect()
  
+
 @Bot.command()
 async def help(ctx):
     author = ctx.message.author
     embed = discord.Embed(title = 'Help', description = f'Hello, {author.mention}! List of all commands:\n'
                           '• `!help` outputs the help command;\n'
                           '• `!play` (aliases: `!p`) playback songs/streams. Arguments: the query or the reference;\n'
+                          '• `!radio` playing the radio. Two radio stations are available: **Europa +** or **Radio Record**'
                           '• `!volume` changing the volume. Arguments: integer from 0 to 100;\n'
                           '• `!pause` pause the current playback;\n'
                           '• `!resume` continue playing;\n'
                           '• `!stop` (aliases: `!leave`) full stop of playback with subsequent disconnection of the bot from the voice channel.')
     await ctx.send(embed = embed)
-    
+  
+
 token = os.environ.get('bot_token')
 Bot.run(str(token))
