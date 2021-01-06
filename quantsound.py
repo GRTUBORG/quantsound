@@ -27,8 +27,10 @@ async def on_ready():
 async def play(ctx, *, url, volume = 0.5):
     global vc
     
+    author = ctx.message.author
     voice_channel = ctx.message.author.voice.channel
     vc = await voice_channel.connect()
+    
     if vc.is_playing():
         await ctx.send(f'{ctx.message.author.mention}, the music is already playing.')
     else:
@@ -53,12 +55,9 @@ async def play(ctx, *, url, volume = 0.5):
         vc.play(discord.FFmpegPCMAudio(executable = "/app/vendor/ffmpeg/ffmpeg", source = URL, **FFMPEG_OPTIONS))
         vc.source = discord.PCMVolumeTransformer(vc.source)
         vc.source.volume = volume
-        if key_error == 0:
-            embed = discord.Embed(title = title, url = f'https://www.youtube.com/watch?v={id}')
-            await ctx.send(embed = embed)
-        else:
-            embed = discord.Embed(title = title, url = f'https://www.youtube.com/watch?v={id}')
-            await ctx.send(embed = embed)
+        
+        embed = discord.Embed(description = f'Now playing: [{title}](https://www.youtube.com/watch?v={id}) [{author.mention}]')
+        await ctx.send(embed = embed)
    
 
 @Bot.command()
