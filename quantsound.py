@@ -63,7 +63,7 @@ async def play(ctx, *, url, volume = 0.5):
         vc.source = discord.PCMVolumeTransformer(vc.source)
         vc.source.volume = volume
         
-        embed = discord.Embed(description = f'Now playing: [{title}](https://www.youtube.com/watch?v={id}) [{author.mention}]')
+        embed = discord.Embed(description = f'Now playing: [{title}](https://www.youtube.com/watch?v={id}) [{author.mention}]', color = 0xbc03ff)
         await ctx.send(embed = embed)
 
         
@@ -81,14 +81,14 @@ async def radio(ctx, *, name, volume = 0.5):
             vc.source = discord.PCMVolumeTransformer(vc.source)
             vc.source.volume = volume
 
-            embed = discord.Embed(description = f'Now playing: [Europa +](https://europaplus.ru) [{author.mention}]')
+            embed = discord.Embed(description = f'Now playing: [Europa +](https://europaplus.ru) [{author.mention}]', color = 0xbc03ff)
             await ctx.send(embed = embed)
         elif name.lower == 'радио рекорд' or 'radio record' or 'радио record' or 'record':
             vc.play(discord.FFmpegPCMAudio(executable = "/app/vendor/ffmpeg/ffmpeg", source = 'http://air2.radiorecord.ru:805/rr_320', **FFMPEG_OPTIONS))
             vc.source = discord.PCMVolumeTransformer(vc.source)
             vc.source.volume = volume
 
-            embed = discord.Embed(description = f'Now playing: [Radio Record](https://www.radiorecord.ru) [{author.mention}]')
+            embed = discord.Embed(description = f'Now playing: [Radio Record](https://www.radiorecord.ru) [{author.mention}]', color = 0xbc03ff)
             await ctx.send(embed = embed)
         else:
             await ctx.send('Check the request is correct!')
