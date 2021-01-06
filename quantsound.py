@@ -1,3 +1,7 @@
+#Attention! This code is written for the Heroku service! 
+#Therefore, if you encounter any shortcomings/errors/bugs on other services, please write to me. 
+#We will understand!
+
 import asyncio
 import os
 import discord
@@ -140,7 +144,7 @@ async def help(ctx):
     embed = discord.Embed(title = 'Help', description = f'Hello, {author.mention}! List of all commands:\n'
                           '• `!help` outputs the help command;\n'
                           '• `!play` (aliases: `!p`) playback songs/streams. Arguments: the query or the reference;\n'
-                          '• `!radio` playing the radio. Two radio stations are available: **Europa +** or **Radio Record**'
+                          '• `!radio` playing the radio. Two radio stations are available: **Europa +** or **Radio Record**;\n'
                           '• `!volume` changing the volume. Arguments: integer from 0 to 100;\n'
                           '• `!pause` pause the current playback;\n'
                           '• `!resume` continue playing;\n'
