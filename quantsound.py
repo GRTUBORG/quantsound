@@ -87,7 +87,7 @@ async def radio(ctx, *, name, volume = 0.5):
     else:
         await ctx.send('Check the request is correct!')
 
-    vc.play(discord.FFmpegPCMAudio(executable = "/usr/bin/ffmpeg", source = source, **FFMPEG_OPTIONS))
+    vc.play(discord.FFmpegPCMAudio(executable = "/app/vendor/ffmpeg/ffmpeg", source = source, **FFMPEG_OPTIONS))
     vc.source = discord.PCMVolumeTransformer(vc.source)
     vc.source.volume = volume
 
