@@ -58,7 +58,31 @@ async def play(ctx, *, url, volume = 0.5):
         
         embed = discord.Embed(description = f'Now playing: [{title}](https://www.youtube.com/watch?v={id}) [{author.mention}]')
         await ctx.send(embed = embed)
-   
+
+@Bot.command()
+async def radio(ctx, *, name, volume = 0.5):
+    voice_channel = ctx.message.author.voice.channel
+    vc = await voice_channel.connect()
+
+    if vc.is_playing():
+        await ctx.send(f'{ctx.message.author.mention}, the music is already playing.')
+    else:
+        if name.lower == 'европа +' or 'europa +' or 'европа плюс' or 'europa plus':
+            vc.play(discord.FFmpegPCMAudio(executable = "/app/vendor/ffmpeg/ffmpeg", source = 'http://ep128.streamr.ru', **FFMPEG_OPTIONS))
+            vc.source = discord.PCMVolumeTransformer(vc.source)
+            vc.source.volume = volume
+
+            embed = discord.Embed(description = 'Now playing: [Europa +](https://europaplus.ru)')
+            await ctx.send(embed = embed)
+        elif name.lower == 'радио рекорд' or 'radio record' or 'радио record' or 'record':
+            vc.play(discord.FFmpegPCMAudio(executable = "/app/vendor/ffmpeg/ffmpeg", source = 'http://air2.radiorecord.ru:805/rr_320', **FFMPEG_OPTIONS))
+            vc.source = discord.PCMVolumeTransformer(vc.source)
+            vc.source.volume = volume
+
+            embed = discord.Embed(description = 'Now playing: [Radio Record](https://www.radiorecord.ru)')
+            await ctx.send(embed = embed)
+        else:
+            await ctx.send('Проверь правильность запроса!')
 
 @Bot.command()
 async def volume(ctx, *, volume: int):
