@@ -34,7 +34,7 @@ Bot.remove_command('help')
 
 @Bot.event
 async def on_ready():
-    await Bot.change_presence(activity = discord.Activity(type = discord.ActivityType.listening, name = "!help"))
+    await Bot.change_presence(activity = discord.Activity(type = discord.ActivityType.listening, name = "!help :musical_note: v. 7.1.21"))
     print('{0.user} в онлайне!'.format(Bot))
  
 
