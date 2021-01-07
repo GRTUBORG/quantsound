@@ -26,7 +26,8 @@ help_message = (':flag_ru:\n'
 youtube_dl.utils.bug_reports_message = lambda: ''
 
 intents = discord.Intents.all()
-Bot = commands.Bot(command_prefix = ["qs!"], intents = discord.Intents.all())
+prefix = ["qs!"]
+Bot = commands.Bot(command_prefix = prefix, intents = discord.Intents.all())
 Bot.remove_command('help')
 
 
@@ -170,13 +171,13 @@ async def stop(ctx):
 async def help(ctx):
     author = ctx.message.author
     embed = discord.Embed(title = 'Help', description = f'Hello, {author.mention}! List of all commands:\n'
-                          '• `!help` outputs the help command;\n'
-                          '• `!play` (aliases: `!p`) playback songs/streams. Arguments: the query or the reference;\n'
-                          '• `!radio` playing the radio. The radio list is available by command: `!radio help`;\n'
-                          '• `!volume` changing the volume. Arguments: integer from 0 to 100;\n'
-                          '• `!pause` pause the current playback;\n'
-                          '• `!resume` continue playing;\n'
-                          '• `!stop` (aliases: `!leave`) full stop of playback with subsequent disconnection of the bot from the voice channel.')
+                          f'• `{prefix}help` outputs the help command;\n'
+                          f'• `{prefix}play` (aliases: `{prefix}p`) playback songs/streams. Arguments: the query or the reference;\n'
+                          f'• `{prefix}radio` playing the radio. The radio list is available by command: `{prefix}radio help`;\n'
+                          f'• `{prefix}volume` changing the volume. Arguments: integer from 0 to 100;\n'
+                          f'• `{prefix}pause` pause the current playback;\n'
+                          f'• `{prefix}resume` continue playing;\n'
+                          f'• `{prefix}stop` (aliases: `{prefix}leave`) full stop of playback with subsequent disconnection of the bot from the voice channel.')
     await ctx.send(embed = embed)
   
 
