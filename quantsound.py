@@ -79,7 +79,9 @@ async def play(ctx, *, url, volume = 0.5):
 async def radio(ctx, *, name = 'help', volume = 0.5):
     if name == '--help' or name == 'help' or name == '' or name == ' ':
         embed = discord.Embed(title = 'List of available radio stations', description = help)
-        await ctx.send(embed = embed)
+        message = await ctx.send(embed = embed)
+        await asyncio.sleep(15)
+        await message.delete()
     else:
         name = name.lower()
         author = ctx.message.author
