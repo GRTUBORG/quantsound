@@ -68,13 +68,19 @@ async def play(ctx, *, url, volume = 0.5):
 
         
 @Bot.command()
-async def radio(ctx, *, name, volume = 0.5):
+async def radio(ctx, *, name = None, volume = 0.5):
     name = name.lower()
     author = ctx.message.author
     voice_channel = ctx.message.author.voice.channel
     vc = await voice_channel.connect(reconnect = True)
-
-    if name == 'европа +' or name == 'europa +' or name == 'европа плюс' or name == 'europa plus':
+    
+    if name == 'None' or name == '--help' or name == 'help':
+        embed = discord.Embed(description = 'list of available radio stations: \n'
+                              ':flag_ru:\n'
+                              '**Europa +**, **Radio Record**, **Record Deep**, **Radio Energy**')
+        await ctx.send(embed = embed)
+    
+    elif name == 'европа +' or name == 'europa +' or name == 'европа плюс' or name == 'europa plus':
         source = 'http://ep128.streamr.ru'
         embed = discord.Embed(description = f'Now playing: [Europa +](https://europaplus.ru) [{author.mention}]', color = 0xbc03ff)
         await ctx.send(embed = embed)
@@ -82,6 +88,16 @@ async def radio(ctx, *, name, volume = 0.5):
     elif name == 'радио рекорд' or name == 'radio record' or name == 'радио record' or name == 'record':
         source = 'http://air2.radiorecord.ru:805/rr_320'
         embed = discord.Embed(description = f'Now playing: [Radio Record](https://www.radiorecord.ru) [{author.mention}]', color = 0xbc03ff)
+        await ctx.send(embed = embed)
+        
+    elif name == 'record deep' or name == 'deep' or name == 'радио deep' or name == 'radio deep':
+        source = 'http://air2.radiorecord.ru:805/deep_320'
+        embed = discord.Embed(description = f'Now playing: [Record Deep](https://www.radiorecord.ru/station/deep) [{author.mention}]', color = 0xbc03ff)
+        await ctx.send(embed = embed)
+
+    elif name == 'radio energy' or name == 'energy' or name == 'энерджи' or name == 'радио энерджи':
+        source = 'https://pub0302.101.ru:8443/stream/air/aac/64/99'
+        embed = discord.Embed(description = f'Now playing: [Radio Enegry](https://www.energyfm.ru) [{author.mention}]', color = 0xbc03ff)
         await ctx.send(embed = embed)
 
     else:
