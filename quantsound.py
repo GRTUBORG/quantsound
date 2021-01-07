@@ -148,7 +148,7 @@ async def resume(ctx):
     if voice and not voice.is_playing():
         voice.resume()
         message = ctx.message
-        await message.add_reaction('👌')
+        await message.add_reaction('🤘')
     else:
         await ctx.send('The music is already playing')
 
@@ -158,7 +158,7 @@ async def stop(ctx):
     voice = get(Bot.voice_clients, guild = ctx.guild)
     if voice:
         message = ctx.message
-        await message.add_reaction('👌')
+        await message.add_reaction('👋')
         await ctx.voice_client.disconnect()
  
 
