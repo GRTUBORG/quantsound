@@ -16,12 +16,12 @@ from discord.utils import get
 YDL_OPTIONS = {'format': 'worstaudio/best', 'noplaylist': 'True', 'simulate': 'True', 'preferredquality': '192', 'preferredcodec': 'mp3', 'key': 'FFmpegExtractAudio'}
 FFMPEG_OPTIONS = {'before_options': '-reconnect 1 -reconnect_streamed 1 -reconnect_delay_max 5', 'options': '-vn'}
 
-help = ':flag_ru:\n'
+help = (':flag_ru:\n'
        '**[Europa +](https://europaplus.ru)**, **[Radio Record](https://www.radiorecord.ru)**, '
        '**[Record Deep](https://www.radiorecord.ru/station/deep)**, **[Radio Enegry](https://www.energyfm.ru)**'
        '\n\n'
        ':flag_us:\n'
-       '**[West coast](http://the-radio.ru/radio/pvpjamz-west-coast-r637)**'
+       '**[West coast](http://the-radio.ru/radio/pvpjamz-west-coast-r637)**')
 
 youtube_dl.utils.bug_reports_message = lambda: ''
 
