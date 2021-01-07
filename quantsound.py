@@ -150,23 +150,30 @@ async def pause(ctx):
         
 @Bot.command()
 async def resume(ctx):
+    voice_channel = ctx.message.author.voice.channel
     voice = get(Bot.voice_clients, guild = ctx.guild)
     if voice and not voice.is_playing():
-        voice.resume()
-        message = ctx.message
-        await message.add_reaction('🤘')
+        if vc == voice and voice_channel == voice:
+            voice.resume()
+            message = ctx.message
+            await message.add_reaction('🤘')
+        else:
+            await ctx.send('You are not connected to the channel!')
     else:
         await ctx.send('The music is already playing')
 
         
 @Bot.command(aliases = ['leave'])
 async def stop(ctx):
+    voice_channel = ctx.message.author.voice.channel
     voice = get(Bot.voice_clients, guild = ctx.guild)
     if voice:
-        message = ctx.message
-        await message.add_reaction('👋')
-        await ctx.voice_client.disconnect()
- 
+        if vc == voice and voice_channel == voice:
+            message = ctx.message
+            await message.add_reaction('👋')
+            await ctx.voice_client.disconnect()
+        else:
+            await ctx.send('You are not connected to the channel!')
 
 @Bot.command()
 async def help(ctx):
