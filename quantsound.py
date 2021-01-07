@@ -168,7 +168,7 @@ async def help(ctx):
     embed = discord.Embed(title = 'Help', description = f'Hello, {author.mention}! List of all commands:\n'
                           '• `!help` outputs the help command;\n'
                           '• `!play` (aliases: `!p`) playback songs/streams. Arguments: the query or the reference;\n'
-                          '• `!radio` playing the radio. Two radio stations are available: **Europa +** or **Radio Record**;\n'
+                          '• `!radio` playing the radio. The radio list is available by command: `!radio help`;\n'
                           '• `!volume` changing the volume. Arguments: integer from 0 to 100;\n'
                           '• `!pause` pause the current playback;\n'
                           '• `!resume` continue playing;\n'
