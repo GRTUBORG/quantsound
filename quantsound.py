@@ -26,7 +26,7 @@ help_message = (':flag_ru:\n'
 youtube_dl.utils.bug_reports_message = lambda: ''
 
 intents = discord.Intents.all()
-prefix = ["qs!"]
+prefix = "qs!"
 Bot = commands.Bot(command_prefix = prefix, intents = discord.Intents.all())
 Bot.remove_command('help')
 
