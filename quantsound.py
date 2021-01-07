@@ -100,7 +100,8 @@ async def radio(ctx, *, name = 'help', volume = 0.5):
             await ctx.send(embed = embed)
 
         else:
-            await ctx.send('Check the request is correct!')
+            await ctx.send('I caught an invalid request, I play the radio station `Europe +`')
+            source = 'http://ep128.streamr.ru'
 
         voice_channel = ctx.message.author.voice.channel
         vc = await voice_channel.connect(reconnect = True)
