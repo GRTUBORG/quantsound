@@ -69,7 +69,7 @@ async def play(ctx, *, url, volume = 0.5):
         
 @Bot.command()
 async def radio(ctx, *, name = 'help', volume = 0.5):
-    if name == '--help' or name == 'help':
+    if name == '--help' or name == 'help' or name == '' or name == ' ':
         embed = discord.Embed(title = 'List of available radio stations', description =
                               ':flag_ru:\n'
                               '**[Europa +](https://europaplus.ru)**, **[Radio Record](https://www.radiorecord.ru)**, '
