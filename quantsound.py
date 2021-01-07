@@ -50,7 +50,7 @@ async def play(ctx, *, url, volume = 0.5):
     if vc.is_playing():
         await ctx.send(f'{ctx.message.author.mention}, the music is already playing.')
     else:
-        embed = discord.Embed(description = f'A few seconds, {author.mention}.')
+        embed = discord.Embed(description = f'A few seconds, {author.mention}')
         message = await ctx.send(embed = embed)
         
         correct_url = url[:8]
