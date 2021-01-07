@@ -135,9 +135,10 @@ async def volume(ctx, *, volume: int):
     
 @Bot.command()
 async def pause(ctx):
+    voice_channel = ctx.message.author.voice.channel
     voice = get(Bot.voice_clients, guild = ctx.guild)
     if voice and voice.is_playing():
-        if vc == voice:
+        if vc == voice and voice_channel == voice:
             voice.pause()
             message = ctx.message
             await message.add_reaction('👌')
