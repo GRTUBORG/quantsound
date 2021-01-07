@@ -138,12 +138,9 @@ async def pause(ctx):
     voice_channel = ctx.message.author.voice.channel
     voice = get(Bot.voice_clients, guild = ctx.guild)
     if voice and voice.is_playing():
-        if voice_channel == voice:
-            voice.pause()
-            message = ctx.message
-            await message.add_reaction('👌')
-        else:
-            await ctx.send('You are not connected to the channel!')
+        voice.pause()
+        message = ctx.message
+        await message.add_reaction('👌')
     else: 
         await ctx.send('There is nothing to suspend!')
 
