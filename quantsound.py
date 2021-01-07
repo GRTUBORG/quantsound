@@ -70,9 +70,10 @@ async def play(ctx, *, url, volume = 0.5):
 @Bot.command()
 async def radio(ctx, *, name = 'help', volume = 0.5):
     if name == '--help' or name == 'help':
-        embed = discord.Embed(description = 'list of available radio stations: \n'
+        embed = discord.Embed(title = 'List of available radio stations', description =
                               ':flag_ru:\n'
-                              '**Europa +**, **Radio Record**, **Record Deep**, **Radio Energy**')
+                              '**[Europa +](https://europaplus.ru)**, **[Radio Record](https://www.radiorecord.ru)**, '
+                              '**[Record Deep](https://www.radiorecord.ru/station/deep)**, **[Radio Enegry](https://www.energyfm.ru)**')
         await ctx.send(embed = embed)
     else:
         name = name.lower()
