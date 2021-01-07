@@ -16,12 +16,12 @@ from discord.utils import get
 YDL_OPTIONS = {'format': 'worstaudio/best', 'noplaylist': 'True', 'simulate': 'True', 'preferredquality': '192', 'preferredcodec': 'mp3', 'key': 'FFmpegExtractAudio'}
 FFMPEG_OPTIONS = {'before_options': '-reconnect 1 -reconnect_streamed 1 -reconnect_delay_max 5', 'options': '-vn'}
 
-help = (':flag_ru:\n'
-       '**[Europa +](https://europaplus.ru)**, **[Radio Record](https://www.radiorecord.ru)**, '
-       '**[Record Deep](https://www.radiorecord.ru/station/deep)**, **[Radio Enegry](https://www.energyfm.ru)**'
-       '\n\n'
-       ':flag_us:\n'
-       '**[West coast](http://the-radio.ru/radio/pvpjamz-west-coast-r637)**')
+help_message = (':flag_ru:\n'
+                '**[Europa +](https://europaplus.ru)**, **[Radio Record](https://www.radiorecord.ru)**, '
+                '**[Record Deep](https://www.radiorecord.ru/station/deep)**, **[Radio Enegry](https://www.energyfm.ru)**'
+                '\n\n'
+                ':flag_us:\n'
+                '**[West coast](http://the-radio.ru/radio/pvpjamz-west-coast-r637)**')
 
 youtube_dl.utils.bug_reports_message = lambda: ''
 
@@ -78,7 +78,7 @@ async def play(ctx, *, url, volume = 0.5):
 @Bot.command()
 async def radio(ctx, *, name = 'help', volume = 0.5):
     if name == '--help' or name == 'help' or name == '' or name == ' ':
-        embed = discord.Embed(title = 'List of available radio stations', description = help)
+        embed = discord.Embed(title = 'List of available radio stations', description = help_message)
         message = await ctx.send(embed = embed)
         await asyncio.sleep(15)
         await message.delete()
