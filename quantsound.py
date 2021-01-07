@@ -18,7 +18,7 @@ FFMPEG_OPTIONS = {'before_options': '-reconnect 1 -reconnect_streamed 1 -reconne
 
 help_message = (':flag_ru:\n'
                 '**[Europa +](https://europaplus.ru)**, **[Radio Record](https://www.radiorecord.ru)**, '
-                '**[Record Deep](https://www.radiorecord.ru/station/deep)**, **[Radio Enegry](https://www.energyfm.ru)**'
+                '**[Record Deep](https://www.radiorecord.ru/station/deep)**, **[Radio Energy](https://www.energyfm.ru)**'
                 '\n\n'
                 ':flag_us:\n'
                 '**[West coast](http://the-radio.ru/radio/pvpjamz-west-coast-r637)**')
@@ -108,7 +108,7 @@ async def radio(ctx, *, name = 'help', volume = 0.5):
 
         elif name == 'radio energy' or name == 'energy' or name == 'энерджи' or name == 'радио энерджи':
             source = 'https://pub0302.101.ru:8443/stream/air/aac/64/99'
-            embed = discord.Embed(description = f'Now playing: [Radio Enegry](https://www.energyfm.ru) [{author.mention}]', color = 0xbc03ff)
+            embed = discord.Embed(description = f'Now playing: [Radio Energy](https://www.energyfm.ru) [{author.mention}]', color = 0xbc03ff)
             await ctx.send(embed = embed)
 
         else:
