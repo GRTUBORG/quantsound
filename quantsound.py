@@ -50,8 +50,7 @@ async def play(ctx, *, url, volume = 0.5):
     if vc.is_playing():
         await ctx.send(f'{ctx.message.author.mention}, the music is already playing.')
     else:
-        embed = discord.Embed(description = f'A few seconds, {author.mention}...')
-        message = await ctx.send(embed = embed)
+        message = await ctx.send(f'A few seconds, {author.mention}.')
         
         correct_url = url[:8]
         correct_url1 = 'https://'
@@ -63,6 +62,7 @@ async def play(ctx, *, url, volume = 0.5):
                 URL = info['entries'][0]['formats'][0]['url']
                 title = info['entries'][0]['title']
                 id = info['entries'][0]['id']
+                await message.edit(content = f'A few seconds, {author.mention}..')
         else: 
             key_error = 1
             with YoutubeDL(YDL_OPTIONS) as ydl:
@@ -70,7 +70,9 @@ async def play(ctx, *, url, volume = 0.5):
                 URL = info['formats'][0]['url']
                 title = info['title']
                 id = info['id']
+                await message.edit(content = f'A few seconds, {author.mention}..')                   
         
+        await message.edit(content = f'A few seconds, {author.mention}...')
         vc.play(discord.FFmpegPCMAudio(executable = "/app/vendor/ffmpeg/ffmpeg", source = URL, **FFMPEG_OPTIONS))
         vc.source = discord.PCMVolumeTransformer(vc.source)
         vc.source.volume = volume
