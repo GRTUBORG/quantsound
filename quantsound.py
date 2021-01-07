@@ -26,7 +26,7 @@ help_message = (':flag_ru:\n'
 youtube_dl.utils.bug_reports_message = lambda: ''
 
 intents = discord.Intents.all()
-Bot = commands.Bot(command_prefix = ["!"], intents = discord.Intents.all())
+Bot = commands.Bot(command_prefix = ["qs!"], intents = discord.Intents.all())
 Bot.remove_command('help')
 
 
@@ -34,7 +34,7 @@ Bot.remove_command('help')
 
 @Bot.event
 async def on_ready():
-    await Bot.change_presence(activity = discord.Activity(type = discord.ActivityType.listening, name = "!help 🎶 v7.1.21"))
+    await Bot.change_presence(activity = discord.Activity(type = discord.ActivityType.listening, name = "qs!help 🎶 v7.1.21"))
     print('{0.user} в онлайне!'.format(Bot))
  
 
