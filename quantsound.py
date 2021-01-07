@@ -49,6 +49,9 @@ async def play(ctx, *, url, volume = 0.5):
     if vc.is_playing():
         await ctx.send(f'{ctx.message.author.mention}, the music is already playing.')
     else:
+        embed = discord.Embed(description = f'A few seconds, {author.mention}...')
+        message = await ctx.send(embed = embed)
+        
         correct_url = url[:8]
         correct_url1 = 'https://'
         
@@ -71,6 +74,7 @@ async def play(ctx, *, url, volume = 0.5):
         vc.source = discord.PCMVolumeTransformer(vc.source)
         vc.source.volume = volume
         
+        await message.delete()
         embed = discord.Embed(description = f'Now playing: [{title}](https://www.youtube.com/watch?v={id}) [{author.mention}]', color = 0xbc03ff)
         await ctx.send(embed = embed)
 
