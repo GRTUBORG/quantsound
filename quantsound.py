@@ -138,7 +138,7 @@ async def pause(ctx):
     voice_channel = ctx.message.author.voice.channel
     voice = get(Bot.voice_clients, guild = ctx.guild)
     if voice and voice.is_playing():
-        if vc == voice and voice_channel == voice:
+        if voice_channel == vc:
             voice.pause()
             message = ctx.message
             await message.add_reaction('👌')
@@ -153,7 +153,7 @@ async def resume(ctx):
     voice_channel = ctx.message.author.voice.channel
     voice = get(Bot.voice_clients, guild = ctx.guild)
     if voice and not voice.is_playing():
-        if vc == voice and voice_channel == voice:
+        if voice_channel == vc:
             voice.resume()
             message = ctx.message
             await message.add_reaction('🤘')
@@ -168,7 +168,7 @@ async def stop(ctx):
     voice_channel = ctx.message.author.voice.channel
     voice = get(Bot.voice_clients, guild = ctx.guild)
     if voice:
-        if vc == voice and voice_channel == voice:
+        if voice_channel == vc:
             message = ctx.message
             await message.add_reaction('👋')
             await ctx.voice_client.disconnect()
