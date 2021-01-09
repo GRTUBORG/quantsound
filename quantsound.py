@@ -62,20 +62,25 @@ async def play(ctx, *, url, volume = 0.5):
                 URL = info['entries'][0]['formats'][0]['url']
                 title = info['entries'][0]['title']
                 id = info['entries'][0]['id']
+                picture = info['entries'][0]['thumbnails'][0]['url']
         else: 
             with YoutubeDL(YDL_OPTIONS) as ydl:
                 info = ydl.extract_info(url, download = False)
                 URL = info['formats'][0]['url']
                 title = info['title']
-                id = info['id']                  
+                id = info['id']                
         
         vc.play(discord.FFmpegPCMAudio(executable = "/app/vendor/ffmpeg/ffmpeg", source = URL, **FFMPEG_OPTIONS))
         vc.source = discord.PCMVolumeTransformer(vc.source)
         vc.source.volume = volume
         
-        await message.delete()
-        embed = discord.Embed(description = f'Now playing: [{title}](https://www.youtube.com/watch?v={id}) [{author.mention}]', color = 0xbc03ff)
-        await ctx.send(embed = embed)
+        try:
+            embed = discord.Embed(description = f'Now playing: [{title}](https://www.youtube.com/watch?v={id}) [{author.mention}]', color = 0xbc03ff)
+            embed.set_thumbnail(url = picture)
+            await ctx.send(embed = embed)
+        except:
+            embed = discord.Embed(description = f'Now playing: [{title}](https://www.youtube.com/watch?v={id}) [{author.mention}]', color = 0xbc03ff)
+            await ctx.send(embed = embed)
 
         
 @Bot.command()
