@@ -98,22 +98,30 @@ async def radio(ctx, *, name = 'help', volume = 0.5):
     
         if name == 'европа +' or name == 'europa +' or name == 'европа плюс' or name == 'europa plus':
             source = 'http://ep128.streamr.ru'
+            url = 'https://bit.ly/39gx54n'
             embed = discord.Embed(description = f'Now playing: [Europa +](https://europaplus.ru) [{author.mention}]', color = 0xbc03ff)
+            embed.set_author(name = 'Radio', icon_url = url)
             await ctx.send(embed = embed)
 
         elif name == 'радио рекорд' or name == 'radio record' or name == 'радио record' or name == 'record':
             source = 'http://air2.radiorecord.ru:805/rr_320'
+            url = 'https://bit.ly/3hV2xcx'
             embed = discord.Embed(description = f'Now playing: [Radio Record](https://www.radiorecord.ru) [{author.mention}]', color = 0xbc03ff)
+            embed.set_author(name = 'Radio', icon_url = url)
             await ctx.send(embed = embed)
             
         elif name == 'record deep' or name == 'deep' or name == 'радио deep' or name == 'radio deep':
             source = 'http://air2.radiorecord.ru:805/deep_320'
+            url = 'https://bit.ly/3hYQPgX'
             embed = discord.Embed(description = f'Now playing: [Record Deep](https://www.radiorecord.ru/station/deep) [{author.mention}]', color = 0xbc03ff)
+            embed.set_author(name = 'Radio', icon_url = url)
             await ctx.send(embed = embed)
 
         elif name == 'radio energy' or name == 'energy' or name == 'энерджи' or name == 'радио энерджи':
             source = 'https://pub0302.101.ru:8443/stream/air/aac/64/99'
+            url = 'https://bit.ly/2JXXUlg'
             embed = discord.Embed(description = f'Now playing: [Radio Energy](https://www.energyfm.ru) [{author.mention}]', color = 0xbc03ff)
+            embed.set_author(name = 'Radio', icon_url = url)
             await ctx.send(embed = embed)
 
         else:
