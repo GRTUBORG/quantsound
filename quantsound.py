@@ -183,7 +183,15 @@ async def help(ctx):
                           f'• `{prefix}resume` continue playing;\n'
                           f'• `{prefix}stop` (aliases: `{prefix}leave`) full stop of playback with subsequent disconnection of the bot from the voice channel.')
     await ctx.send(embed = embed)
-  
+
+
+@Bot.command(aliases = ['AUTHOR'])
+async def author(ctx):
+    await ctx.message.delete()
+    embed = discord.Embed(title = 'Авторы:', description = '**Разработчик:** [https://vk.com/d.blinov79](Денис Блинов);\n'
+                                                           '**С подачи** [https://vk.com/code_authora_174](Павла Кудрявцева);\n'
+                                                           '**Наша группа в ВК: [quantsound](https://vk.com/quantsound_discord).',
+                                                           color = 0xbc03ff)
 
 token = os.environ.get('bot_token')
 Bot.run(str(token))
