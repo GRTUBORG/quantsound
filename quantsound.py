@@ -208,7 +208,8 @@ async def help(ctx):
                           f'• `{prefix}volume` changing the volume. Arguments: integer from 0 to 100;\n'
                           f'• `{prefix}pause` pause the current playback;\n'
                           f'• `{prefix}resume` continue playing;\n'
-                          f'• `{prefix}stop` (aliases: `{prefix}leave`) full stop of playback with subsequent disconnection of the bot from the voice channel.')
+                          f'• `{prefix}stop` (aliases: `{prefix}leave`) full stop of playback with subsequent disconnection of the bot from the voice channel;\n'
+                          f'• `{prefix}author` all information about the authors of quantsound.')
     await ctx.send(embed = embed)
 
 
