@@ -220,7 +220,7 @@ async def author(ctx):
     await ctx.message.delete()
     embed = discord.Embed(title = 'Our team:', description = '• Developer: **[Denis Blinov](https://vk.com/d.blinov79)**,\n'
                                                              '• Developer github: **[GRTUBORG](https://github.com/GRTUBORG)**;\n'
-                                                             '• From giving **[Pavel Kudryavtsev](https://vk.com/code_authora_174)**;\n'
+                                                             '• From giving discord member **•Satoemari•#3381**;\n'
                                                              '• Our group in VK: **[quantsound](https://vk.com/quantsound_discord)**.',
                                                              color = 0xbc03ff)
     await ctx.send(embed = embed)
