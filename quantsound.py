@@ -123,6 +123,13 @@ async def radio(ctx, *, name = 'help', volume = 0.5):
             embed = discord.Embed(description = f'Now playing: [Radio Energy](https://www.energyfm.ru) [{author.mention}]', color = 0xbc03ff)
             embed.set_author(name = 'Radio', icon_url = url)
             await ctx.send(embed = embed)
+            
+        elif name == 'radio west' or name == 'west coast' or name == 'радио вест коаст' or name == 'вест коаст':
+            source = 'https://stream.pvpjamz.com/stream'
+            url = 'https://bit.ly/2LEv9L6'
+            embed = discord.Embed(description = f'Now playing: [Weat Coast](http://the-radio.ru/radio/pvpjamz-west-coast-r637) [{author.mention}]', color = 0xbc03ff)
+            embed.set_author(name = 'Radio', icon_url = url)
+            await ctx.send(embed = embed)
 
         else:
             await ctx.send('I caught an invalid request, I play the radio station `Europe +`')
