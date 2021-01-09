@@ -64,7 +64,7 @@ async def play(ctx, *, url, volume = 0.5):
         None
         
     if vc.is_playing():
-        message = await ctx.send(f'{ctx.message.author.mention}, the music is already playing.')
+        message = await ctx.send(f'{ctx.message.author.mention}, the music is already playing. Please wait for your turn!')
         await asyncio.sleep(10)
         await message.delete()
     else:
