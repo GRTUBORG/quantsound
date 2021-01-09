@@ -188,10 +188,10 @@ async def help(ctx):
 @Bot.command(aliases = ['AUTHOR'])
 async def author(ctx):
     await ctx.message.delete()
-    embed = discord.Embed(title = 'Авторы:', description = '**Разработчик:** [https://vk.com/d.blinov79](Денис Блинов);\n'
-                                                           '**С подачи** [https://vk.com/code_authora_174](Павла Кудрявцева);\n'
-                                                           '**Наша группа в ВК: [quantsound](https://vk.com/quantsound_discord).',
-                                                           color = 0xbc03ff)
+    embed = discord.Embed(title = 'Our team:', description = '**Developer:** [Denis Blinov](https://vk.com/d.blinov79);\n'
+                                                             '**From giving** [Pavel Kudryavtsev](https://vk.com/code_authora_174);\n'
+                                                             '**Our group in VK:** [quantsound](https://vk.com/quantsound_discord).',
+                                                             color = 0xbc03ff)
     await ctx.send(embed = embed)
     
 
