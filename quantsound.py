@@ -59,79 +59,44 @@ async def play(ctx, *, url, volume = 0.5):
     voice_channel = ctx.message.author.voice.channel
     try:
         vc = await voice_channel.connect()
-        if vc.is_playing():
-            await ctx.send(f'{ctx.message.author.mention}, the music is already playing.')
-        else:
-            embed = discord.Embed(description = f'A few seconds, {author.mention}')
-            message = await ctx.send(embed = embed)
-            
-            correct_url = url[:8]
-            correct_url1 = 'https://'
-            
-            if correct_url != correct_url1:
-                with YoutubeDL(YDL_OPTIONS) as ydl:
-                    info = ydl.extract_info(f'ytsearch:{url}', download = False)
-                    URL = info['entries'][0]['formats'][0]['url']
-                    title = info['entries'][0]['title']
-                    id = info['entries'][0]['id']
-                    picture = info['entries'][0]['thumbnails'][0]['url']
-            else: 
-                with YoutubeDL(YDL_OPTIONS) as ydl:
-                    info = ydl.extract_info(url, download = False)
-                    URL = info['formats'][0]['url']
-                    title = info['title']
-                    id = info['id']                
-            
-            vc.play(discord.FFmpegPCMAudio(executable = "/app/vendor/ffmpeg/ffmpeg", source = URL, **FFMPEG_OPTIONS))
-            vc.source = discord.PCMVolumeTransformer(vc.source)
-            vc.source.volume = volume
-            
-            await message.delete()
-            
-            try:
-                embed = discord.Embed(description = f'Now playing: [{title}](https://www.youtube.com/watch?v={id}) [{author.mention}]', color = 0xbc03ff)
-                embed.set_thumbnail(url = picture)
-                await ctx.send(embed = embed)
-            except:
-                embed = discord.Embed(description = f'Now playing: [{title}](https://www.youtube.com/watch?v={id}) [{author.mention}]', color = 0xbc03ff)
-                await ctx.send(embed = embed)
     except:
-        if vc.is_playing():
-            await ctx.send(f'{ctx.message.author.mention}, the music is already playing.')
-        else:
-            embed = discord.Embed(description = f'A few seconds, {author.mention}')
-            message = await ctx.send(embed = embed)
+        None
+    if vc.is_playing():
+        await ctx.send(f'{ctx.message.author.mention}, the music is already playing.')
+    else:
+        embed = discord.Embed(description = f'A few seconds, {author.mention}')
+        message = await ctx.send(embed = embed)
             
-            correct_url = url[:8]
-            correct_url1 = 'https://'
+        correct_url = url[:8]
+        correct_url1 = 'https://'
             
-            if correct_url != correct_url1:
-                with YoutubeDL(YDL_OPTIONS) as ydl:
-                    info = ydl.extract_info(f'ytsearch:{url}', download = False)
-                    URL = info['entries'][0]['formats'][0]['url']
-                    title = info['entries'][0]['title']
-                    id = info['entries'][0]['id']
-                    picture = info['entries'][0]['thumbnails'][0]['url']
-            else: 
-                with YoutubeDL(YDL_OPTIONS) as ydl:
-                    info = ydl.extract_info(url, download = False)
-                    URL = info['formats'][0]['url']
-                    title = info['title']
-                    id = info['id']                
+        if correct_url != correct_url1:
+            with YoutubeDL(YDL_OPTIONS) as ydl:
+                info = ydl.extract_info(f'ytsearch:{url}', download = False)
+                URL = info['entries'][0]['formats'][0]['url']
+                title = info['entries'][0]['title']
+                id = info['entries'][0]['id']
+                picture = info['entries'][0]['thumbnails'][0]['url']
+        else: 
+            with YoutubeDL(YDL_OPTIONS) as ydl:
+                info = ydl.extract_info(url, download = False)
+                URL = info['formats'][0]['url']
+                title = info['title']
+                id = info['id']                
             
-            vc.play(discord.FFmpegPCMAudio(executable = "/app/vendor/ffmpeg/ffmpeg", source = URL, **FFMPEG_OPTIONS))
-            vc.source = discord.PCMVolumeTransformer(vc.source)
-            vc.source.volume = volume
+        vc.play(discord.FFmpegPCMAudio(executable = "/app/vendor/ffmpeg/ffmpeg", source = URL, **FFMPEG_OPTIONS))
+        vc.source = discord.PCMVolumeTransformer(vc.source)
+        vc.source.volume = volume
             
-            await message.delete()
+        await message.delete()
             
-            try:
-                embed = discord.Embed(description = f'Now playing: [{title}](https://www.youtube.com/watch?v={id}) [{author.mention}]', color = 0xbc03ff)
-                embed.set_thumbnail(url = picture)
-                await ctx.send(embed = embed)
-            except:
-                embed = discord.Embed(description = f'Now playing: [{title}](https://www.youtube.com/watch?v={id}) [{author.mention}]', color = 0xbc03ff)
-                await ctx.send(embed = embed)
+        try:
+            embed = discord.Embed(description = f'Now playing: [{title}](https://www.youtube.com/watch?v={id}) [{author.mention}]', color = 0xbc03ff)
+            embed.set_thumbnail(url = picture)
+            await ctx.send(embed = embed)
+        except:
+            embed = discord.Embed(description = f'Now playing: [{title}](https://www.youtube.com/watch?v={id}) [{author.mention}]', color = 0xbc03ff)
+            await ctx.send(embed = embed)
 
         
 @Bot.command()
