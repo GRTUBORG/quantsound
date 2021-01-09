@@ -204,6 +204,7 @@ async def stop(ctx):
         await message.add_reaction('👋')
         await ctx.voice_client.disconnect()
 
+        
 @Bot.command()
 async def help(ctx):
     author = ctx.message.author
