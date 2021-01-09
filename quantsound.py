@@ -57,10 +57,12 @@ async def play(ctx, *, url, volume = 0.5):
     
     author = ctx.message.author
     voice_channel = ctx.message.author.voice.channel
+    
     try:
         vc = await voice_channel.connect()
     except:
         None
+        
     if vc.is_playing():
         await ctx.send(f'{ctx.message.author.mention}, the music is already playing.')
     else:
