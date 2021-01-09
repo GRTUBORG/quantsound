@@ -37,7 +37,19 @@ Bot.remove_command('help')
 async def on_ready():
     await Bot.change_presence(activity = discord.Activity(type = discord.ActivityType.listening, name = "qs!help 🎶 v9.1.21"))
     print('{0.user} в онлайне!'.format(Bot))
- 
+
+
+@Bot.event
+async def on_command_error(ctx, error):
+    pass
+
+@Bot.event
+async def on_command_error(ctx, error):
+    if isinstance(error, commands.CommandNotFound):
+        author = ctx.message.author
+        embed = discord.Embed(description = f'Attention, {author.mention}! This command __does not exist__! Check the spelling, or write the command `{prefix}help`', color = 0xff1a1a)
+        await ctx.send(embed = embed)
+        
 
 @Bot.command(aliases = ['p'])
 async def play(ctx, *, url, volume = 0.5):
