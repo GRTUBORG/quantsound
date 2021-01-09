@@ -192,6 +192,8 @@ async def author(ctx):
                                                            '**С подачи** [https://vk.com/code_authora_174](Павла Кудрявцева);\n'
                                                            '**Наша группа в ВК: [quantsound](https://vk.com/quantsound_discord).',
                                                            color = 0xbc03ff)
+    await ctx.send(embed = embed)
+    
 
 token = os.environ.get('bot_token')
 Bot.run(str(token))
