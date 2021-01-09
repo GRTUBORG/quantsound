@@ -74,6 +74,8 @@ async def play(ctx, *, url, volume = 0.5):
         vc.source = discord.PCMVolumeTransformer(vc.source)
         vc.source.volume = volume
         
+        await message.delete()
+        
         try:
             embed = discord.Embed(description = f'Now playing: [{title}](https://www.youtube.com/watch?v={id}) [{author.mention}]', color = 0xbc03ff)
             embed.set_thumbnail(url = picture)
