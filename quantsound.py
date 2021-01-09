@@ -64,7 +64,9 @@ async def play(ctx, *, url, volume = 0.5):
         None
         
     if vc.is_playing():
-        await ctx.send(f'{ctx.message.author.mention}, the music is already playing.')
+        message = await ctx.send(f'{ctx.message.author.mention}, the music is already playing.')
+        await asyncio.sleep(10)
+        await message.delete()
     else:
         embed = discord.Embed(description = f'A few seconds, {author.mention}')
         message = await ctx.send(embed = embed)
