@@ -82,7 +82,7 @@ async def play(ctx, *, url, volume = 0.5):
                     title = info['title']
                     id = info['id']                
             
-            vc.play(discord.FFmpegPCMAudio(executable = "/usr/bin/ffmpeg", source = URL, **FFMPEG_OPTIONS))
+            vc.play(discord.FFmpegPCMAudio(executable = "/app/vendor/ffmpeg/ffmpeg", source = URL, **FFMPEG_OPTIONS))
             vc.source = discord.PCMVolumeTransformer(vc.source)
             vc.source.volume = volume
             
@@ -119,7 +119,7 @@ async def play(ctx, *, url, volume = 0.5):
                     title = info['title']
                     id = info['id']                
             
-            vc.play(discord.FFmpegPCMAudio(executable = "/usr/bin/ffmpeg", source = URL, **FFMPEG_OPTIONS))
+            vc.play(discord.FFmpegPCMAudio(executable = "/app/vendor/ffmpeg/ffmpeg", source = URL, **FFMPEG_OPTIONS))
             vc.source = discord.PCMVolumeTransformer(vc.source)
             vc.source.volume = volume
             
