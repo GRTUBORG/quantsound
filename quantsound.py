@@ -57,14 +57,12 @@ async def play(ctx, *, url, volume = 0.5):
         correct_url1 = 'https://'
         
         if correct_url != correct_url1:
-            key_error = 0
             with YoutubeDL(YDL_OPTIONS) as ydl:
                 info = ydl.extract_info(f'ytsearch:{url}', download = False)
                 URL = info['entries'][0]['formats'][0]['url']
                 title = info['entries'][0]['title']
                 id = info['entries'][0]['id']
         else: 
-            key_error = 1
             with YoutubeDL(YDL_OPTIONS) as ydl:
                 info = ydl.extract_info(url, download = False)
                 URL = info['formats'][0]['url']
