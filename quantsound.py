@@ -16,6 +16,9 @@ from discord.utils import get
 YDL_OPTIONS = {'format': 'worstaudio/best', 'noplaylist': 'True', 'simulate': 'True', 'preferredquality': '192', 'preferredcodec': 'mp3', 'key': 'FFmpegExtractAudio'}
 FFMPEG_OPTIONS = {'before_options': '-reconnect 1 -reconnect_streamed 1 -reconnect_delay_max 5', 'options': '-vn'}
 
+QIWI_TOKEN = os.environ.get('qiwi_token')
+QIWI_ACCOUNT = os.environ.get('qiwi_account')
+
 help_message = (':flag_ru:\n'
                 '**[Europa +](https://europaplus.ru)**, **[Radio Record](https://www.radiorecord.ru)**, '
                 '**[Record Deep](https://www.radiorecord.ru/station/deep)**, **[Radio Energy](https://www.energyfm.ru)**'
