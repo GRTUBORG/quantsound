@@ -17,7 +17,7 @@ YDL_OPTIONS = {'format': 'worstaudio/best', 'noplaylist': 'True', 'simulate': 'T
 FFMPEG_OPTIONS = {'before_options': '-reconnect 1 -reconnect_streamed 1 -reconnect_delay_max 5', 'options': '-vn'}
 
 help_message = (':flag_ru:\n'
-                '**[Europa +](https://europaplus.ru)**, **[Radio Record](https://www.radiorecord.ru)**, '
+                '**[Europe +](https://europaplus.ru)**, **[Radio Record](https://www.radiorecord.ru)**, '
                 '**[Record Deep](https://www.radiorecord.ru/station/deep)**, **[Radio Energy](https://www.energyfm.ru)**'
                 '\n\n'
                 ':flag_us:\n'
@@ -114,10 +114,10 @@ async def radio(ctx, *, name = 'help', volume = 0.5):
         name = name.lower()
         author = ctx.message.author
     
-        if name == 'европа +' or name == 'europa +' or name == 'европа плюс' or name == 'europa plus':
+        if name == 'европа +' or name == 'europe +' or name == 'европа плюс' or name == 'europe plus':
             source = 'http://ep128.streamr.ru'
             url = 'https://bit.ly/39gx54n'
-            embed = discord.Embed(description = f'Now playing: [Europa +](https://europaplus.ru) [{author.mention}]', color = 0xbc03ff)
+            embed = discord.Embed(description = f'Now playing: [Europe +](https://europaplus.ru) [{author.mention}]', color = 0xbc03ff)
             embed.set_author(name = 'Radio', icon_url = url)
             await ctx.send(embed = embed)
 
