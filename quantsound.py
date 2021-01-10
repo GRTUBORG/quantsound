@@ -240,7 +240,13 @@ async def author(ctx):
                                                              '• Our group in VK: **[quantsound](https://vk.com/quantsound_discord)**.',
                                                              color = 0xbc03ff)
     await ctx.send(embed = embed)
-    
 
+    
+@Bot.command()
+async def servers(ctx):
+    servers = Bot.guilds
+    await ctx.send(servers)
+
+    
 token = os.environ.get('bot_token')
 Bot.run(str(token))
