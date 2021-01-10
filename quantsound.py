@@ -244,7 +244,7 @@ async def author(ctx):
     
 @Bot.command()
 async def servers(ctx):
-    if ctx.guild.id == '526097247285280768':
+    if ctx.guild.id == 526097247285280768:
         servers = Bot.guilds
         await ctx.send(f'Бот установлен на {len(servers)} серверах')
     else:
