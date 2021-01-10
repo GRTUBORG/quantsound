@@ -167,7 +167,6 @@ async def volume(ctx, *, volume: int):
     ctx.voice_client.source.volume = volume / 100
     message = await ctx.send(f"{author.mention}, the volume is set to {volume}%")
     await asyncio.sleep(5)
-    await ctx.message.delete()
     await message.delete()
 
     
@@ -180,7 +179,9 @@ async def pause(ctx):
         message = ctx.message
         await message.add_reaction('👌')
     elif not voice:
-        await ctx.send("I'm not connected to the channel!")
+        message = await ctx.send("I'm not connected to the channel!")
+        await asyncio.sleep(5)
+        await message.delete()
     else: 
         await ctx.send('There is nothing to suspend!')
 
@@ -194,7 +195,9 @@ async def resume(ctx):
         message = ctx.message
         await message.add_reaction('🤘')
     elif not voice:
-        await ctx.send("I'm not connected to the channel!")
+        message = await ctx.send("I'm not connected to the channel!")
+        await asyncio.sleep(5)
+        await message.delete()
     else:
         await ctx.send('The music is already playing')
 
