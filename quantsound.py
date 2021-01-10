@@ -179,6 +179,8 @@ async def pause(ctx):
         voice.pause()
         message = ctx.message
         await message.add_reaction('👌')
+    elif not voice:
+        await ctx.send("I'm not connected to the channel!")
     else: 
         await ctx.send('There is nothing to suspend!')
 
@@ -191,6 +193,8 @@ async def resume(ctx):
         voice.resume()
         message = ctx.message
         await message.add_reaction('🤘')
+    elif not voice:
+        await ctx.send("I'm not connected to the channel!")
     else:
         await ctx.send('The music is already playing')
 
@@ -203,6 +207,10 @@ async def stop(ctx):
         message = ctx.message
         await message.add_reaction('👋')
         await ctx.voice_client.disconnect()
+    else:
+        message = await ctx.send("I'm not connected to the channel!")
+        await asyncio.sleep(5)
+        await message.delete()
 
         
 @Bot.command()
