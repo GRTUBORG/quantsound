@@ -245,7 +245,7 @@ async def author(ctx):
 @Bot.command()
 async def servers(ctx):
     servers = Bot.guilds
-    await ctx.send(len(servers))
+    await ctx.send(f'Бот установлен на {len(servers)} серверах')
 
     
 token = os.environ.get('bot_token')
