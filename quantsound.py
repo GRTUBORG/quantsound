@@ -245,7 +245,7 @@ async def author(ctx):
 @Bot.command()
 async def servers(ctx):
     servers = Bot.guilds
-    await ctx.send(servers)
+    await ctx.send(len(servers))
 
     
 token = os.environ.get('bot_token')
