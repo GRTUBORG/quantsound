@@ -82,6 +82,8 @@ async def play(ctx, *, url, volume = 0.5):
         if correct_url != correct_url1:
             with YoutubeDL(YDL_OPTIONS) as ydl:
                 info = ydl.extract_info(f'ytsearch:{url}', download = False)
+                duration = info['entries'][0]['duration'] 
+                duration = str(datetime.timedelta(seconds = duration))
                 URL = info['entries'][0]['formats'][0]['url']
                 title = info['entries'][0]['title']
                 id = info['entries'][0]['id']
@@ -89,9 +91,11 @@ async def play(ctx, *, url, volume = 0.5):
         else: 
             with YoutubeDL(YDL_OPTIONS) as ydl:
                 info = ydl.extract_info(url, download = False)
+                duration = info['duration']
+                duration = str(datetime.timedelta(seconds = duration))
                 URL = info['formats'][0]['url']
                 title = info['title']
-                id = info['id']                
+                id = info['id']                 
             
         vc.play(discord.FFmpegPCMAudio(executable = "/app/vendor/ffmpeg/ffmpeg", source = URL, **FFMPEG_OPTIONS))
         vc.source = discord.PCMVolumeTransformer(vc.source)
@@ -100,14 +104,14 @@ async def play(ctx, *, url, volume = 0.5):
         await message.delete()
             
         try:
-            embed = discord.Embed(description = f'Now playing: [{title}](https://www.youtube.com/watch?v={id}) [{author.mention}]', color = 0xbc03ff)
+            embed = discord.Embed(description = f'Now playing: [{title}](https://www.youtube.com/watch?v={id}) [{author.mention}] \nDuration: `{duration}`', color = 0xbc03ff)
             embed.set_thumbnail(url = picture)
             await ctx.send(embed = embed)
         except:
-            embed = discord.Embed(description = f'Now playing: [{title}](https://www.youtube.com/watch?v={id}) [{author.mention}]', color = 0xbc03ff)
+            embed = discord.Embed(description = f'Now playing: [{title}](https://www.youtube.com/watch?v={id}) [{author.mention}] \nDuration: `{duration}`', color = 0xbc03ff)
             await ctx.send(embed = embed)
 
-        
+            
 @Bot.command()
 async def radio(ctx, *, name = 'help', volume = 0.5):
     if name == '--help' or name == 'help' or name == '' or name == ' ':
