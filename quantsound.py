@@ -209,8 +209,15 @@ async def resume(ctx):
         
 @Bot.command(aliases = ['leave'])
 async def stop(ctx):
-    voice_channel = ctx.message.author.voice.channel
-    voice = get(Bot.voice_clients, guild = ctx.guild)
+    author = ctx.message.author
+    try:
+        voice_channel = ctx.message.author.voice.channel
+        voice = get(Bot.voice_clients, guild = ctx.guild)
+    except:
+        message = await ctx.send(f"{author.mention}, you're not connected to the voice channel!")
+        await asyncio.sleep(5)
+        await message.delete()
+        
     if voice:
         message = ctx.message
         await message.add_reaction('👋')
