@@ -3,14 +3,6 @@
 [![Discord](https://img.shields.io/discord/526097247285280768)](https://discord.gg/rjMDwaB)
 [![Issues](https://img.shields.io/bitbucket/issues/GRTUBORG/quantprod)](https://github.com/GRTUBORG/quantprod/issues)  
 
-**RU**  
-
-### Бот относится к проекту quant2020  
-* Небольшой плеер для [дискорда](https://discord.gg/rjMDwaB), который умеет воспроизводить как обычные аудиодорожки, взятые из видео с ютуба, так и стримы;   
-* Совместим с другими серверами Discord.    
-  
-**ENG**  
-
 # INFORMATION ABOUT QUANTSOUND  
 
 ## What can this bot do?
