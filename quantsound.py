@@ -83,7 +83,10 @@ async def play(ctx, *, url, volume = 0.5):
             with YoutubeDL(YDL_OPTIONS) as ydl:
                 info = ydl.extract_info(f'ytsearch:{url}', download = False)
                 duration = info['entries'][0]['duration'] 
-                duration = str(datetime.timedelta(seconds = duration))
+                if duration == 0:
+                    duration = "I can't tell the time. Most likely, you have turned on the stream"
+                else:
+                    duration = str(datetime.timedelta(seconds = duration))
                 URL = info['entries'][0]['formats'][0]['url']
                 title = info['entries'][0]['title']
                 id = info['entries'][0]['id']
@@ -92,7 +95,10 @@ async def play(ctx, *, url, volume = 0.5):
             with YoutubeDL(YDL_OPTIONS) as ydl:
                 info = ydl.extract_info(url, download = False)
                 duration = info['duration']
-                duration = str(datetime.timedelta(seconds = duration))
+                if duration == 0:
+                    duration = "I can't tell the time. Most likely, you have turned on the stream"
+                else:
+                    duration = str(datetime.timedelta(seconds = duration))
                 URL = info['formats'][0]['url']
                 title = info['title']
                 id = info['id']                 
