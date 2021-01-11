@@ -228,7 +228,7 @@ async def help(ctx):
                           f'• `{prefix}resume` continue playing;\n'
                           f'• `{prefix}stop` (aliases: `{prefix}leave`) full stop of playback with subsequent disconnection of the bot from the voice channel;\n'
                           f'• `{prefix}author` all information about the authors of quantsound;\n'
-                          f'• `{prefix}servers find out information about servers. It works only on the home server and displays the number of servers on which the bot is installed.')
+                          f'• `{prefix}servers` find out information about servers. It works only on the home server and displays the number of servers on which the bot is installed.')
     await ctx.send(embed = embed)
 
 
