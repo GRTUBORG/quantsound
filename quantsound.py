@@ -56,7 +56,12 @@ async def play(ctx, *, url, volume = 0.5):
     global vc
     
     author = ctx.message.author
-    voice_channel = ctx.message.author.voice.channel
+    try:
+        voice_channel = ctx.message.author.voice.channel
+    except:
+        message = await ctx.send(f"{author.mention}, you're not connected to the voice channel!")
+        await asyncio.sleep(5)
+        await message.delete()
     
     try:
         vc = await voice_channel.connect()
