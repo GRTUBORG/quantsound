@@ -82,11 +82,11 @@ async def play(ctx, *, url, volume = 0.5):
         if correct_url != correct_url1:
             with YoutubeDL(YDL_OPTIONS) as ydl:
                 info = ydl.extract_info(f'ytsearch:{url}', download = False)
-                duration = info['entries'][0]['duration'] 
+                """duration = info['entries'][0]['duration'] 
                 if duration == 0:
                     duration = "I can't tell the time. Most likely, you have turned on the stream"
                 else:
-                    duration = str(datetime.timedelta(seconds = duration))
+                    duration = str(datetime.timedelta(seconds = duration))"""
                 URL = info['entries'][0]['formats'][0]['url']
                 title = info['entries'][0]['title']
                 id = info['entries'][0]['id']
@@ -94,11 +94,11 @@ async def play(ctx, *, url, volume = 0.5):
         else: 
             with YoutubeDL(YDL_OPTIONS) as ydl:
                 info = ydl.extract_info(url, download = False)
-                duration = info['duration']
+                """duration = info['duration']
                 if duration == 0:
                     duration = "I can't tell the time. Most likely, you have turned on the stream"
                 else:
-                    duration = str(datetime.timedelta(seconds = duration))
+                    duration = str(datetime.timedelta(seconds = duration))"""
                 URL = info['formats'][0]['url']
                 title = info['title']
                 id = info['id']                 
@@ -110,11 +110,11 @@ async def play(ctx, *, url, volume = 0.5):
         await message.delete()
             
         try:
-            embed = discord.Embed(description = f'Now playing: [{title}](https://www.youtube.com/watch?v={id}) [{author.mention}] \nDuration: `{duration}`', color = 0xbc03ff)
+            embed = discord.Embed(description = f'Now playing: [{title}](https://www.youtube.com/watch?v={id}) [{author.mention}]', color = 0xbc03ff)
             embed.set_thumbnail(url = picture)
             await ctx.send(embed = embed)
         except:
-            embed = discord.Embed(description = f'Now playing: [{title}](https://www.youtube.com/watch?v={id}) [{author.mention}] \nDuration: `{duration}`', color = 0xbc03ff)
+            embed = discord.Embed(description = f'Now playing: [{title}](https://www.youtube.com/watch?v={id}) [{author.mention}]', color = 0xbc03ff)
             await ctx.send(embed = embed)
 
             
