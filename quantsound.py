@@ -283,7 +283,7 @@ async def stop(ctx):
 @Bot.command()
 async def help(ctx):
     author = ctx.message.author
-    embed = discord.Embed(title = 'Help', description = f'Hello, {author.mention}! List of all commands:\n'
+    embed = discord.Embed(description = f'**Hello, {author.mention}! List of all commands:**\n'
                           f'• `{prefix}help` outputs the help command;\n'
                           f'• `{prefix}play` (aliases: `{prefix}p`) playback songs/streams. Arguments: the query or the reference;\n'
                           f'• `{prefix}radio` playing the radio. The radio list is available by command: `{prefix}radio help`;\n'
@@ -292,7 +292,9 @@ async def help(ctx):
                           f'• `{prefix}resume` continue playing;\n'
                           f'• `{prefix}stop` (aliases: `{prefix}leave`) full stop of playback with subsequent disconnection of the bot from the voice channel;\n'
                           f'• `{prefix}author` all information about the authors of quantsound;\n'
-                          f'• `{prefix}servers` find out information about servers. It works only on the home server and displays the number of servers on which the bot is installed.')
+                          f'• `{prefix}servers` find out information about servers. It works only on the home server and displays the number of servers on which the bot is installed.\n\n\n'
+                          '[Invite quantsound](https://discord.com/oauth2/authorize?client_id=795312210343624724&permissions=8&scope=bot) | [Support server](https://discord.gg/rjMDwaB)', color = 0xbc03ff)
+    embed.set_author(name = "Quantsound Support", icon_url = "https://bit.ly/39w96yc")
     await ctx.send(embed = embed)
 
 
