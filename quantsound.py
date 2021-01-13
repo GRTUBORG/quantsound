@@ -171,12 +171,11 @@ async def radio(ctx, *, name = 'help', volume = 0.5):
             await ctx.send(embed = embed)
 
         else:
-            message = await ctx.send('I caught an invalid request, I play the radio station `Europe +`')
+            message_invalid = await ctx.send('I caught an invalid request, I play the radio station `Europe +`')
             source = 'http://ep128.streamr.ru'
             url = 'https://bit.ly/39gx54n'
             embed = discord.Embed(description = f'Now playing: [Europe +](https://europaplus.ru) [{author.mention}]', color = 0xbc03ff)
             embed.set_author(name = 'Radio', icon_url = url)
-            await message.delete()
             await ctx.send(embed = embed)
 
         voice_channel = ctx.message.author.voice.channel
@@ -185,7 +184,9 @@ async def radio(ctx, *, name = 'help', volume = 0.5):
         vc.play(discord.FFmpegPCMAudio(executable = "/app/vendor/ffmpeg/ffmpeg", source = source, **FFMPEG_OPTIONS))
         vc.source = discord.PCMVolumeTransformer(vc.source)
         vc.source.volume = volume
-
+        
+        await asyncio.sleep(5)
+        await message_invalid.delete()
             
 @Bot.command()
 async def volume(ctx, *, volume: int):
