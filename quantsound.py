@@ -330,6 +330,7 @@ async def servers(ctx):
         await asyncio.sleep(5) 
         await message.delete()
 
-    
+
+        
 token = os.environ.get('bot_token')
 Bot.run(str(token))
