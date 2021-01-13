@@ -199,8 +199,14 @@ async def volume(ctx, *, volume: int):
     
 @Bot.command()
 async def pause(ctx):
-    voice_channel = ctx.message.author.voice.channel
-    voice = get(Bot.voice_clients, guild = ctx.guild)
+    try:
+        voice_channel = ctx.message.author.voice.channel
+        voice = get(Bot.voice_clients, guild = ctx.guild)
+    except:
+        message = await ctx.send(f"{author.mention}, you're not connected to the voice channel!")
+        await asyncio.sleep(5)
+        await message.delete()
+        
     if voice and voice.is_playing():
         voice.pause()
         message = ctx.message
@@ -215,8 +221,14 @@ async def pause(ctx):
         
 @Bot.command()
 async def resume(ctx):
-    voice_channel = ctx.message.author.voice.channel
-    voice = get(Bot.voice_clients, guild = ctx.guild)
+    try:
+        voice_channel = ctx.message.author.voice.channel
+        voice = get(Bot.voice_clients, guild = ctx.guild)
+    except:
+        message = await ctx.send(f"{author.mention}, you're not connected to the voice channel!")
+        await asyncio.sleep(5)
+        await message.delete()
+        
     if voice and not voice.is_playing():
         voice.resume()
         message = ctx.message
