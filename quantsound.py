@@ -321,6 +321,22 @@ async def author(ctx):
 
     
 @Bot.command()
+async def donate(ctx):
+    author = ctx.message.author
+    embed = discord.Embed(description = f"Hi {author.mention}, I'm really glad you stopped by!\n"
+                                        'Our bot is free for the Discord community, but our team will be grateful '
+                                        'to you for donating absolutely any amount to the further development of **quantsound**\n\n'
+                                        'Payment is available on several e-wallets:\n'
+                                        '• [QIWI](https://qiwi.com/n/OVERFLOW16),\n'
+                                        '• [ЮMoney](https://money.yandex.ru/to/410015133921329),\n\n'
+                                        '*Paypal* and *Webmoney* will also be available soon...\n\n'
+                                        'Thank you for choosing us! \n🤍', color = 0xbc03ff)
+    embed.set_author(name = "The donations page", icon_url = "https://bit.ly/39w96yc")
+    embed.set_footer(text = "supports by quantsound")
+    await ctx.send(embed = embed)
+    
+    
+@Bot.command()
 async def servers(ctx):
     if ctx.guild.id == 526097247285280768:
         servers = Bot.guilds
