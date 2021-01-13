@@ -48,6 +48,7 @@ async def on_command_error(ctx, error):
     if isinstance(error, commands.CommandNotFound):
         author = ctx.message.author
         embed = discord.Embed(description = f'Attention, {author.mention}! This command __does not exist__! Check the spelling, or write the command `{prefix}help`', color = 0xff1a1a)
+        embed.set_footer(text = "supports by quantsound")
         await ctx.send(embed = embed)
         
 
@@ -118,9 +119,11 @@ async def play(ctx, *, url, volume = 0.5):
         try:
             embed = discord.Embed(description = f'Now playing: [{title}](https://www.youtube.com/watch?v={id}) [{author.mention}]', color = 0xbc03ff)
             embed.set_thumbnail(url = picture)
+            embed.set_footer(text = "supports by quantsound")
             await ctx.send(embed = embed)
         except:
             embed = discord.Embed(description = f'Now playing: [{title}](https://www.youtube.com/watch?v={id}) [{author.mention}]', color = 0xbc03ff)
+            embed.set_footer(text = "supports by quantsound")
             await ctx.send(embed = embed)
 
             
@@ -128,6 +131,7 @@ async def play(ctx, *, url, volume = 0.5):
 async def radio(ctx, *, name = 'help', volume = 0.5):
     if name == '--help' or name == 'help' or name == '' or name == ' ':
         embed = discord.Embed(title = 'List of available radio stations', description = help_message)
+        embed.set_footer(text = "supports by quantsound")
         message = await ctx.send(embed = embed)
         await asyncio.sleep(15)
         await message.delete()
@@ -146,6 +150,7 @@ async def radio(ctx, *, name = 'help', volume = 0.5):
             url = 'https://bit.ly/39gx54n'
             embed = discord.Embed(description = f'Now playing: [Europe +](https://europaplus.ru) [{author.mention}]', color = 0xbc03ff)
             embed.set_author(name = 'Radio', icon_url = url)
+            embed.set_footer(text = "supports by quantsound")
             await ctx.send(embed = embed)
 
         elif name == 'радио рекорд' or name == 'radio record' or name == 'радио record' or name == 'record':
@@ -153,6 +158,7 @@ async def radio(ctx, *, name = 'help', volume = 0.5):
             url = 'https://bit.ly/3hV2xcx'
             embed = discord.Embed(description = f'Now playing: [Radio Record](https://www.radiorecord.ru) [{author.mention}]', color = 0xbc03ff)
             embed.set_author(name = 'Radio', icon_url = url)
+            embed.set_footer(text = "supports by quantsound")
             await ctx.send(embed = embed)
             
         elif name == 'record deep' or name == 'deep' or name == 'радио deep' or name == 'radio deep':
@@ -160,6 +166,7 @@ async def radio(ctx, *, name = 'help', volume = 0.5):
             url = 'https://bit.ly/3hYQPgX'
             embed = discord.Embed(description = f'Now playing: [Record Deep](https://www.radiorecord.ru/station/deep) [{author.mention}]', color = 0xbc03ff)
             embed.set_author(name = 'Radio', icon_url = url)
+            embed.set_footer(text = "supports by quantsound")
             await ctx.send(embed = embed)
 
         elif name == 'radio energy' or name == 'energy' or name == 'энерджи' or name == 'радио энерджи':
@@ -167,6 +174,7 @@ async def radio(ctx, *, name = 'help', volume = 0.5):
             url = 'https://bit.ly/2JXXUlg'
             embed = discord.Embed(description = f'Now playing: [Radio Energy](https://www.energyfm.ru) [{author.mention}]', color = 0xbc03ff)
             embed.set_author(name = 'Radio', icon_url = url)
+            embed.set_footer(text = "supports by quantsound")
             await ctx.send(embed = embed)
             
         elif name == 'radio west' or name == 'west coast' or name == 'радио вест коаст' or name == 'вест коаст':
@@ -174,6 +182,7 @@ async def radio(ctx, *, name = 'help', volume = 0.5):
             url = 'https://bit.ly/2LEv9L6'
             embed = discord.Embed(description = f'Now playing: [Weat Coast](http://the-radio.ru/radio/pvpjamz-west-coast-r637) [{author.mention}]', color = 0xbc03ff)
             embed.set_author(name = 'Radio', icon_url = url)
+            embed.set_footer(text = "supports by quantsound")
             await ctx.send(embed = embed)
 
         else:
@@ -182,6 +191,7 @@ async def radio(ctx, *, name = 'help', volume = 0.5):
             url = 'https://bit.ly/39gx54n'
             embed = discord.Embed(description = f'Now playing: [Europe +](https://europaplus.ru) [{author.mention}]', color = 0xbc03ff)
             embed.set_author(name = 'Radio', icon_url = url)
+            embed.set_footer(text = "supports by quantsound")
             await ctx.send(embed = embed)
 
         voice_channel = ctx.message.author.voice.channel
@@ -295,6 +305,7 @@ async def help(ctx):
                           f'• `{prefix}servers` find out information about servers. It works only on the home server and displays the number of servers on which the bot is installed.\n\n\n'
                           '[Invite quantsound](https://discord.com/oauth2/authorize?client_id=795312210343624724&permissions=8&scope=bot) | [Support server](https://discord.gg/rjMDwaB)', color = 0xbc03ff)
     embed.set_author(name = "Quantsound Support", icon_url = "https://bit.ly/39w96yc")
+    embed.set_footer(text = "supports by quantsound")
     await ctx.send(embed = embed)
 
 
@@ -305,6 +316,7 @@ async def author(ctx):
                                                              '• From giving discord member **[•Satoemari•#3381](https://discord.com/users/394850460420538389)**;\n'
                                                              '• Our group in VK: **[quantsound](https://vk.com/quantsound_discord)**.',
                                                              color = 0xbc03ff)
+    embed.set_footer(text = "supports by quantsound")
     await ctx.send(embed = embed)
 
     
