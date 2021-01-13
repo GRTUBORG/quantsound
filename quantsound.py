@@ -302,6 +302,7 @@ async def help(ctx):
                           f'• `{prefix}resume` continue playing;\n'
                           f'• `{prefix}stop` (aliases: `{prefix}leave`) full stop of playback with subsequent disconnection of the bot from the voice channel;\n'
                           f'• `{prefix}author` all information about the authors of quantsound;\n'
+                          f'• `{prefix}donate` assistance to developers of the bot;\n'
                           f'• `{prefix}servers` find out information about servers. It works only on the home server and displays the number of servers on which the bot is installed.\n\n\n'
                           '[Invite quantsound](https://discord.com/oauth2/authorize?client_id=795312210343624724&permissions=8&scope=bot) | [Support server](https://discord.gg/rjMDwaB)', color = 0xbc03ff)
     embed.set_author(name = "Quantsound Support", icon_url = "https://bit.ly/39w96yc")
