@@ -55,8 +55,11 @@ async def on_command_error(ctx, error):
 async def play(ctx, *, url, volume = 0.5):
     global vc
     
-    message = ctx.message
-    await message.add_reaction('🎵')
+    try:
+        message = ctx.message
+        await message.add_reaction('📻')
+    except:
+        None
     
     author = ctx.message.author
     try:
@@ -129,9 +132,12 @@ async def radio(ctx, *, name = 'help', volume = 0.5):
         await asyncio.sleep(15)
         await message.delete()
     else:
-        message = ctx.message
-        await message.add_reaction('📻')
-        
+        try:
+            message = ctx.message
+            await message.add_reaction('📻')
+        except:
+            None
+            
         name = name.lower()
         author = ctx.message.author
     
