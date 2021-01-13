@@ -57,7 +57,7 @@ async def play(ctx, *, url, volume = 0.5):
     
     try:
         message = ctx.message
-        await message.add_reaction('📻')
+        await message.add_reaction('🎵')
     except:
         None
     
@@ -215,8 +215,12 @@ async def pause(ctx):
         
     if voice and voice.is_playing():
         voice.pause()
-        message = ctx.message
-        await message.add_reaction('👌')
+        try:
+            message = ctx.message
+            await message.add_reaction('👌')
+        except:
+            None
+            
     elif not voice:
         message = await ctx.send("I'm not connected to the channel!")
         await asyncio.sleep(5)
@@ -237,8 +241,12 @@ async def resume(ctx):
         
     if voice and not voice.is_playing():
         voice.resume()
-        message = ctx.message
-        await message.add_reaction('🤘')
+        try:
+            message = ctx.message
+            await message.add_reaction('🤘')
+        except:
+            None
+            
     elif not voice:
         message = await ctx.send("I'm not connected to the channel!")
         await asyncio.sleep(5)
@@ -259,8 +267,12 @@ async def stop(ctx):
         await message.delete()
         
     if voice:
-        message = ctx.message
-        await message.add_reaction('👋')
+        try:
+            message = ctx.message
+            await message.add_reaction('👋')
+        except:
+            None
+            
         await ctx.voice_client.disconnect()
     else:
         message = await ctx.send("I'm not connected to the channel!")
