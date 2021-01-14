@@ -138,7 +138,11 @@ async def play(ctx, *, url, volume = 0.5):
             await ctx.send(embed = embed)
         
         while length != 1:
-            await asyncio.sleep(1)
+            while vc.is_playing():
+                await asyncio.sleep(1)
+            else:
+                await asyncio.sleep(120)
+                await ctx.voice_client.disconnect() 
         else:
             await ctx.voice_client.disconnect() 
             
@@ -221,7 +225,11 @@ async def radio(ctx, *, name = 'help', volume = 0.5):
         await message_invalid.delete()
         
         while length != 1:
-            await asyncio.sleep(1)
+            while vc.is_playing():
+                await asyncio.sleep(1)
+            else:
+                await asyncio.sleep(120)
+                await ctx.voice_client.disconnect() 
         else:
             await ctx.voice_client.disconnect() 
             
