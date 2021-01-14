@@ -35,9 +35,16 @@ Bot.remove_command('help')
 
 @Bot.event
 async def on_ready():
-    await Bot.change_presence(activity = discord.Activity(type = discord.ActivityType.listening, name = "qs!help 🎶 v13.1.21"))
+    await Bot.change_presence(activity = discord.Activity(type = discord.ActivityType.listening, name = "qs!help 🎶 v14.1.21"))
     print('{0.user} в онлайне!'.format(Bot))
 
+@Bot.event
+async def on_voice_state_update(member, before, after):
+    global length
+    if before.channel is None and after.channel is not None:
+        length = len(after.channel.members)
+    elif before.channel is not None and after.channel is None:
+        length = len(before.channel.members)
 
 @Bot.event
 async def on_command_error(ctx, error):
@@ -125,7 +132,12 @@ async def play(ctx, *, url, volume = 0.5):
             embed = discord.Embed(description = f'Now playing: [{title}](https://www.youtube.com/watch?v={id}) [{author.mention}]', color = 0xbc03ff)
             embed.set_footer(text = "supports by quantsound")
             await ctx.send(embed = embed)
-
+        
+        while length != 1:
+            await asyncio.sleep(1)
+        else:
+            await ctx.voice_client.disconnect() 
+            
             
 @Bot.command()
 async def radio(ctx, *, name = 'help', volume = 0.5):
@@ -203,6 +215,12 @@ async def radio(ctx, *, name = 'help', volume = 0.5):
         
         await asyncio.sleep(5)
         await message_invalid.delete()
+        
+        while length != 1:
+            await asyncio.sleep(1)
+        else:
+            await ctx.voice_client.disconnect() 
+            
             
 @Bot.command()
 async def volume(ctx, *, volume: int):
