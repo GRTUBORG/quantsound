@@ -40,7 +40,7 @@ async def on_ready():
         await Bot.change_presence(activity = discord.Activity(type = discord.ActivityType.listening, name = "qs!help 🎶"))
         await sleep(30)
         await Bot.change_presence(activity = discord.Activity(type = discord.ActivityType.listening, name = f"latest update: {update}"))
-        await sleep(10)
+        await sleep(5)
 
 @Bot.event
 async def on_voice_state_update(member, before, after):
