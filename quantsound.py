@@ -114,7 +114,8 @@ async def play(ctx, *, url, volume = 0.5):
             with YoutubeDL(YDL_OPTIONS) as ydl:
                 if url[8:21] == 'www.twitch.tv':
                     info = ydl.extract_info(url, download = False)
-                    URL = info['formats'][0]['manifest_url']
+                    print(info)
+                    URL = info['formats'][0]['url']
                     title = info['title']
                     id = info['id'] 
                 else:
