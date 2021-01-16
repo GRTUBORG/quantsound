@@ -107,7 +107,7 @@ async def play(ctx, *, url, volume = 0.5):
                 picture = info['entries'][0]['thumbnails'][0]['url']
                 
                 await message.delete()
-                embed = discord.Embed(description = f'[YOUTUBE] Now playing: [{title}](https://www.youtube.com/watch?v={id}) [{author.mention}]', color = 0xbc03ff)
+                embed = discord.Embed(description = f'[YOUTUBE 🎬] Now playing: [{title}](https://www.youtube.com/watch?v={id}) [{author.mention}]', color = 0xbc03ff)
                 embed.set_thumbnail(url = picture)
                 embed.set_footer(text = "supports by quantsound")
                 await ctx.send(embed = embed) 
@@ -123,7 +123,7 @@ async def play(ctx, *, url, volume = 0.5):
                     id = info['id']
 
                     await message.delete()
-                    embed = discord.Embed(description = f"[TWITCH] I'm playing a stream: **{title[:-17]}** [{author.mention}]\n"
+                    embed = discord.Embed(description = f"[TWITCH 🎮] I'm playing a stream: **{title[:-17]}** [{author.mention}]\n"
                                                         '\n⚠️ If the stream does not play for one minute - please wait, as the command is in early development', color = 0xbc03ff)
                     embed.set_footer(text = "supports by quantsound")
                     await ctx.send(embed = embed) 
@@ -136,7 +136,7 @@ async def play(ctx, *, url, volume = 0.5):
                     id = info['id']
 
                     await message.delete()
-                    embed = discord.Embed(description = f'[YOUTUBE] Now playing: [{title}](https://www.youtube.com/watch?v={id}) [{author.mention}]', color = 0xbc03ff)
+                    embed = discord.Embed(description = f'[YOUTUBE 🎬] Now playing: [{title}](https://www.youtube.com/watch?v={id}) [{author.mention}]', color = 0xbc03ff)
                     embed.set_footer(text = "supports by quantsound")
                     await ctx.send(embed = embed)               
             
