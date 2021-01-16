@@ -123,8 +123,8 @@ async def play(ctx, *, url, volume = 0.5):
                     id = info['id']
 
                     await message.delete()
-                    embed = discord.Embed(description = f"[TWITCH 🎮] I'm playing a stream: **{title[:-17]}** [{author.mention}]\n"
-                                                        '\n⚠️ If the stream does not play for one minute - please wait, as the command is in early development', color = 0xbc03ff)
+                    embed = discord.Embed(description = f"[TWITCH 🎮] I'm playing a stream: **{title[:-17]}** [{author.mention}]\n\n"
+                                                        '⚠️ If the stream does not play for one minute - please wait, as the command is in early development', color = 0xbc03ff)
                     embed.set_footer(text = "supports by quantsound")
                     await ctx.send(embed = embed) 
 
