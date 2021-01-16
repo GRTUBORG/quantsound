@@ -6,6 +6,7 @@ import asyncio
 import os
 import discord
 import youtube_dl
+import re
 
 from youtube_dl import YoutubeDL
 from asyncio import sleep
