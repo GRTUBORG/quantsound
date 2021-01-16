@@ -129,8 +129,9 @@ async def play(ctx, *, url, volume = 0.5):
                     await ctx.send(embed = embed) 
 
                 
-                else:
+                elif url[8:20] == 'www.youtube.': 
                     info = ydl.extract_info(url, download = False)
+
                     URL = info['formats'][0]['url']
                     title = info['title']
                     id = info['id']
@@ -138,8 +139,15 @@ async def play(ctx, *, url, volume = 0.5):
                     await message.delete()
                     embed = discord.Embed(description = f'[YOUTUBE 🎬] Now playing: [{title}](https://www.youtube.com/watch?v={id}) [{author.mention}]', color = 0xbc03ff)
                     embed.set_footer(text = "supports by quantsound")
-                    await ctx.send(embed = embed)               
-            
+                    await ctx.send(embed = embed)                  
+                
+                else:
+                    await message.delete()
+                    message = await ctx.send('Your link is not suitable for more than one service. Please check your link and the list of available services, and try again...\n\nI play a lo fi stream')
+                    await asyncio.sleep(5)
+                    await message.delete()
+                    URL = 'https://bit.ly/3nXpFIQ'              
+           
         vc.play(discord.FFmpegPCMAudio(executable = "/app/vendor/ffmpeg/ffmpeg", source = URL, **FFMPEG_OPTIONS))
         vc.source = discord.PCMVolumeTransformer(vc.source)
         vc.source.volume = volume
