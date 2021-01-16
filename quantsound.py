@@ -22,7 +22,7 @@ help_message = (':flag_ru:\n'
                 '\n\n'
                 ':flag_us:\n'
                 '**[West coast](http://the-radio.ru/radio/pvpjamz-west-coast-r637)**')
-update = '15.01.21'
+update = '16.01.21'
 youtube_dl.utils.bug_reports_message = lambda: ''
 
 intents = discord.Intents.all()
@@ -111,15 +111,16 @@ async def play(ctx, *, url, volume = 0.5):
                 picture = info['entries'][0]['thumbnails'][0]['url']
         else: 
             with YoutubeDL(YDL_OPTIONS) as ydl:
-                info = ydl.extract_info(url, download = False)
-                """duration = info['duration']                                  #track duration,
-                if duration == 0:                                               #needs to be corrected
-                    duration = "I can't tell the time. Most likely, you have turned on the stream"
+                if url[8:21] == 'www.twitch.tv':
+                    info = ydl.extract_info(url, download = False)
+                    URL = info['formats'][0]['manifest_url']
+                    title = info['title']
+                    id = info['id'] 
                 else:
-                    duration = str(datetime.timedelta(seconds = duration))"""
-                URL = info['formats'][0]['url']
-                title = info['title']
-                id = info['id']                 
+                    info = ydl.extract_info(url, download = False)
+                    URL = info['formats'][0]['url']
+                    title = info['title']
+                    id = info['id']                 
             
         vc.play(discord.FFmpegPCMAudio(executable = "/app/vendor/ffmpeg/ffmpeg", source = URL, **FFMPEG_OPTIONS))
         vc.source = discord.PCMVolumeTransformer(vc.source)
