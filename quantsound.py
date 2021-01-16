@@ -100,11 +100,6 @@ async def play(ctx, *, url, volume = 0.5):
         if correct_url != correct_url1:
             with YoutubeDL(YDL_OPTIONS) as ydl:
                 info = ydl.extract_info(f'ytsearch:{url}', download = False)
-                """duration = info['entries'][0]['duration']                    #track duration,
-                if duration == 0:                                               #needs to be corrected
-                    duration = "I can't tell the time. Most likely, you have turned on the stream"
-                else:
-                    duration = str(datetime.timedelta(seconds = duration))"""
                 URL = info['entries'][0]['formats'][0]['url']
                 title = info['entries'][0]['title']
                 id = info['entries'][0]['id']
@@ -113,8 +108,7 @@ async def play(ctx, *, url, volume = 0.5):
             with YoutubeDL(YDL_OPTIONS) as ydl:
                 if url[8:21] == 'www.twitch.tv':
                     info = ydl.extract_info(url, download = False)
-                    print(info)
-                    URL = info['formats'][0]['url']
+                    URL = info['formats'][0]['manifest_url']
                     title = info['title']
                     id = info['id'] 
                 else:
