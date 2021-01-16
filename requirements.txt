@@ -1,5 +1,5 @@
 discord
 discord.py
 ffmpeg
-youtube-dl
+youtube-dl == 2021.1.16
 pynacl
