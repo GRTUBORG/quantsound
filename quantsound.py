@@ -104,34 +104,42 @@ async def play(ctx, *, url, volume = 0.5):
                 title = info['entries'][0]['title']
                 id = info['entries'][0]['id']
                 picture = info['entries'][0]['thumbnails'][0]['url']
+                
+                await message.delete()
+                embed = discord.Embed(description = f'[YOUTUBE] Now playing: [{title}](https://www.youtube.com/watch?v={id}) [{author.mention}]', color = 0xbc03ff)
+                embed.set_thumbnail(url = picture)
+                embed.set_footer(text = "supports by quantsound")
+                await ctx.send(embed = embed) 
+                
         else: 
             with YoutubeDL(YDL_OPTIONS) as ydl:
                 if url[8:21] == 'www.twitch.tv':
                     info = ydl.extract_info(url, download = False)
                     URL = info['formats'][0]['manifest_url']
                     title = info['title']
-                    id = info['id'] 
+                    id = info['id']
+
+                    await message.delete()
+                    embed = discord.Embed(description = f"[TWITCH] I'm playing a stream: **{title[:-17]}** [{author.mention}]\n"
+                                                        '\n⚠️ If the stream does not play for one minute - please wait, as the command is in early development', color = 0xbc03ff)
+                    embed.set_footer(text = "supports by quantsound")
+                    await ctx.send(embed = embed) 
+
+                
                 else:
                     info = ydl.extract_info(url, download = False)
                     URL = info['formats'][0]['url']
                     title = info['title']
-                    id = info['id']                 
+                    id = info['id']
+
+                    await message.delete()
+                    embed = discord.Embed(description = f'[YOUTUBE] Now playing: [{title}](https://www.youtube.com/watch?v={id}) [{author.mention}]', color = 0xbc03ff)
+                    embed.set_footer(text = "supports by quantsound")
+                    await ctx.send(embed = embed)               
             
         vc.play(discord.FFmpegPCMAudio(executable = "/app/vendor/ffmpeg/ffmpeg", source = URL, **FFMPEG_OPTIONS))
         vc.source = discord.PCMVolumeTransformer(vc.source)
         vc.source.volume = volume
-            
-        await message.delete()
-            
-        try:
-            embed = discord.Embed(description = f'Now playing: [{title}](https://www.youtube.com/watch?v={id}) [{author.mention}]', color = 0xbc03ff)
-            embed.set_thumbnail(url = picture)
-            embed.set_footer(text = "supports by quantsound")
-            await ctx.send(embed = embed)
-        except:
-            embed = discord.Embed(description = f'Now playing: [{title}](https://www.youtube.com/watch?v={id}) [{author.mention}]', color = 0xbc03ff)
-            embed.set_footer(text = "supports by quantsound")
-            await ctx.send(embed = embed)
         
         while length != 1:
             await asyncio.sleep(1) 
