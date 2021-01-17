@@ -143,10 +143,11 @@ async def play(ctx, *, url, volume = 0.5):
                 
                 else:
                     await message.delete()
-                    message = await ctx.send('Your link is not suitable for more than one service. Please check your link and the list of available services, and try again...\n\nI play a lofi stream')
+                    message = await ctx.send('Ooops, your link is not suitable for more than one service. Please check your link and the list of available services, and try again...\n\nI play a lo fi stream')
+                    info = ydl.extract_info(f'ytsearch:lofi stream', download = False)
+                    URL = info['entries'][0]['formats'][0]['url']  
                     await asyncio.sleep(5)
-                    await message.delete()
-                    URL = 'https://bit.ly/3nXpFIQ'              
+                    await message.delete()              
            
         vc.play(discord.FFmpegPCMAudio(executable = "/app/vendor/ffmpeg/ffmpeg", source = URL, **FFMPEG_OPTIONS))
         vc.source = discord.PCMVolumeTransformer(vc.source)
