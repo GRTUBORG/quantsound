@@ -23,7 +23,7 @@ help_message = (':flag_ru:\n'
                 '\n\n'
                 ':flag_us:\n'
                 '**[West coast](http://the-radio.ru/radio/pvpjamz-west-coast-r637)**')
-update = '16.01.21'
+update = '18.01.21'
 youtube_dl.utils.bug_reports_message = lambda: ''
 
 intents = discord.Intents.all()
@@ -38,9 +38,11 @@ Bot.remove_command('help')
 async def on_ready():
     print('{0.user} в онлайне!'.format(Bot))
     while True:
-        await Bot.change_presence(activity = discord.Activity(type = discord.ActivityType.listening, name = "qs!help 🎶"))
+        await Bot.change_presence(activity = discord.Activity(type = discord.ActivityType.listening, name = f"{prefix}help 🎶"))
         await sleep(30)
         await Bot.change_presence(activity = discord.Activity(type = discord.ActivityType.listening, name = f"latest update: {update}"))
+        await sleep(5)
+        await Bot.change_presence(activity = discord.Activity(type = discord.ActivityType.listening, name = f"12 servers!"))
         await sleep(5)
 
 @Bot.event
