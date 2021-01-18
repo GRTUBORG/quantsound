@@ -130,7 +130,7 @@ async def play(ctx, *, url, volume = 0.5):
                     embed.set_footer(text = "supports by quantsound")
                     await ctx.send(embed = embed) 
 
-                
+                    
                 elif url[8:20] == 'www.youtube.': 
                     info = ydl.extract_info(url, download = False)
 
@@ -141,7 +141,39 @@ async def play(ctx, *, url, volume = 0.5):
                     await message.delete()
                     embed = discord.Embed(description = f'[YOUTUBE 🎬] Now playing: [{title}](https://www.youtube.com/watch?v={id}) [{author.mention}]', color = 0xbc03ff)
                     embed.set_footer(text = "supports by quantsound")
-                    await ctx.send(embed = embed)                  
+                    await ctx.send(embed = embed)  
+                
+                
+                elif url[8:17] == 'rutube.ru':
+                    if re.search(r'\bfeeds/live\b', url):
+                        info = ydl.extract_info('ytsearch:lofi stream', download = False)
+                        URL = info['entries'][0]['formats'][0]['url']
+                        title = info['entries'][0]['title']
+                        id = info['entries'][0]['id']
+                        key_error = 0
+                    else:
+                        if re.search(r'\bpl_type\b', url):
+                            url = url[:-27]
+                            print(url)
+                        info = ydl.extract_info(url, download = False)
+                        title = info['title']
+                        URL = info['formats'][1]['url']
+                        id = info['id']
+                        key_error = 1
+                    await message.delete()
+                    
+                    if key_error == 0:
+                        embed = discord.Embed(description = f'[YOUTUBE 🎬] Now playing: [{title}](https://www.youtube.com/watch?v={id}) [{author.mention}] \n\n'
+                                                            "🤔 Why the stream? Unfortunately, I don't support links of this format yet...", color = 0xbc03ff)
+                        embed.set_footer(text = "supports by quantsound")
+                        await ctx.send(embed = embed)
+                        print(1)
+                    else:
+                        embed = discord.Embed(description = f'[RUTUBE 🎬] Now playing: [{title}](https://rutube.ru/video/{id}) [{author.mention}]', color = 0xbc03ff)
+                        embed.set_footer(text = "supports by quantsound")
+                        await ctx.send(embed = embed)
+                        print(0)
+                
                 
                 else:
                     await message.delete()
