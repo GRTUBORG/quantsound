@@ -38,11 +38,11 @@ Bot.remove_command('help')
 async def on_ready():
     print('{0.user} в онлайне!'.format(Bot))
     while True:
-        await Bot.change_presence(activity = discord.Activity(type = discord.ActivityType.listening, name = f"{prefix}help 🎶"))
+        await Bot.change_presence(status = discord.Status.idle, activity = discord.Activity(type = discord.ActivityType.listening, name = f"{prefix}help 🎶"))
         await sleep(30)
-        await Bot.change_presence(activity = discord.Activity(type = discord.ActivityType.listening, name = f"latest update: {update}"))
+        await Bot.change_presence(status = discord.Status.idle, activity = discord.Activity(type = discord.ActivityType.listening, name = f"latest update: {update}"))
         await sleep(5)
-        await Bot.change_presence(activity = discord.Activity(type = discord.ActivityType.listening, name = f"12 servers!"))
+        await Bot.change_presence(status = discord.Status.idle, activity = discord.Activity(type = discord.ActivityType.listening, name = f"12 servers!"))
         await sleep(5)
 
 @Bot.event
