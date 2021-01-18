@@ -163,7 +163,7 @@ async def play(ctx, *, url, volume = 0.5):
                     
                     if key_error == 0:
                         embed = discord.Embed(description = f'[YOUTUBE 🎬] Now playing: [{title}](https://www.youtube.com/watch?v={id}) [{author.mention}] \n\n'
-                                                            "🤔 Why the stream? Unfortunately, I don't support links of this format yet...", color = 0xbc03ff)
+                                                            "🤔 Why the stream? Unfortunately, this is a steam with `RUTUBE`, and I do not support links of this format yet...", color = 0xbc03ff)
                         embed.set_footer(text = "supports by quantsound")
                         await ctx.send(embed = embed)
                     else:
