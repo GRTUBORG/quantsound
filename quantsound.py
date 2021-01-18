@@ -42,7 +42,7 @@ async def on_ready():
         await sleep(30)
         await Bot.change_presence(status = discord.Status.idle, activity = discord.Activity(type = discord.ActivityType.listening, name = f"latest update: {update}"))
         await sleep(5)
-        await Bot.change_presence(status = discord.Status.idle, activity = discord.Activity(type = discord.ActivityType.listening, name = f"12 servers!"))
+        await Bot.change_presence(status = discord.Status.idle, activity = discord.Activity(type = discord.ActivityType.listening, name = f"11 servers!"))
         await sleep(5)
 
 @Bot.event
