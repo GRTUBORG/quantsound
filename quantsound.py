@@ -154,7 +154,6 @@ async def play(ctx, *, url, volume = 0.5):
                     else:
                         if re.search(r'\bpl_type\b', url):
                             url = url[:-27]
-                            print(url)
                         info = ydl.extract_info(url, download = False)
                         title = info['title']
                         URL = info['formats'][1]['url']
@@ -167,12 +166,10 @@ async def play(ctx, *, url, volume = 0.5):
                                                             "🤔 Why the stream? Unfortunately, I don't support links of this format yet...", color = 0xbc03ff)
                         embed.set_footer(text = "supports by quantsound")
                         await ctx.send(embed = embed)
-                        print(1)
                     else:
                         embed = discord.Embed(description = f'[RUTUBE 🎬] Now playing: [{title}](https://rutube.ru/video/{id}) [{author.mention}]', color = 0xbc03ff)
                         embed.set_footer(text = "supports by quantsound")
                         await ctx.send(embed = embed)
-                        print(0)
                 
                 
                 else:
