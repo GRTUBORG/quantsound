@@ -23,7 +23,7 @@ help_message = (':flag_ru:\n'
                 '\n\n'
                 ':flag_us:\n'
                 '**[West coast](http://the-radio.ru/radio/pvpjamz-west-coast-r637)**')
-update = '18.01.21'
+update = '19.01.21'
 youtube_dl.utils.bug_reports_message = lambda: ''
 
 intents = discord.Intents.all()
