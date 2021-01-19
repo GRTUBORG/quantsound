@@ -172,6 +172,23 @@ async def play(ctx, *, url, volume = 0.5):
                         await ctx.send(embed = embed)
                 
                 
+                elif url[8:16] == 'pornhub.' or url[8:19] == 'rt.pornhub.':
+                    info = ydl.extract_info(url, download = False)
+                    title = info['title']
+                    URL = info['formats'][1]['url']
+                    id = info['id']
+                    if ctx.message.channel.is_nsfw():  
+                        thumbnail = info['thumbnail'] 
+                        embed = discord.Embed(description = f'[PORNHUB 🔥] Now playing: [{title}](https://rt.pornhub.com/view_video.php?viewkey={id}) [{author.mention}]', color = 0xbc03ff)
+                        embed.set_thumbnail(url = thumbnail)
+                        embed.set_footer(text = "supports by quantsound")
+                        await ctx.send(embed = embed)
+                    else:
+                        embed = discord.Embed(description = f'[PORNHUB 🔥] Now playing: [{title}](https://rt.pornhub.com/view_video.php?viewkey={id}) [{author.mention}]', color = 0xbc03ff)
+                        embed.set_footer(text = "supports by quantsound")
+                        await ctx.send(embed = embed)
+                
+                 
                 else:
                     await message.delete()
                     message = await ctx.send('Ooops, your link is not suitable for more than one service. Please check your link and the list of available services, and try again...\n\nI play a lo fi stream')
