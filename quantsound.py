@@ -22,6 +22,7 @@ available_services = ('**[1tv](https://www.1tv.ru)**, **[Pornhub](https://rt.por
 
 yoomoney_url = os.environ.get('yoomoney_url')
 qiwi_url = os.environ.get('qiwi_url')
+vk_page = os.environ.get('vk_page')
 
 help_message = (':flag_ru:\n'
                 '**[Europe +](https://europaplus.ru)**, **[Radio Record](https://www.radiorecord.ru)**, '
@@ -429,7 +430,7 @@ async def help(ctx):
 
 @Bot.command(aliases = ['AUTHOR'])
 async def author(ctx):
-    embed = discord.Embed(title = 'Our team:', description = '• Developer: **[Denis Blinov](https://vk.com/d.blinov79)**,\n'
+    embed = discord.Embed(title = 'Our team:', description = f'• Developer: **[Dennis]({vk_page})**,\n'
                                                              '• Developer github: **[GRTUBORG](https://github.com/GRTUBORG)**;\n'
                                                              '• From giving discord member **[•Satoemari•#3381](https://discord.com/users/394850460420538389)**;\n'
                                                              '• Our group in VK: **[quantsound](https://vk.com/quantsound_discord)**.',
