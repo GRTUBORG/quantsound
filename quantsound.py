@@ -188,7 +188,21 @@ async def play(ctx, *, url, volume = 0.5):
                         embed.set_footer(text = "supports by quantsound")
                         await ctx.send(embed = embed)
                 
-                 
+                
+                elif url[8:16] == 'www.1tv.':
+                    print(url[8:16])
+                    info = ydl.extract_info(url, download = False)
+                    URL = info['entries'][0]['formats'][0]['url']  
+                    title = info['entries'][0]['title']
+                    picture = info['entries'][0]['thumbnails'][0]['url']
+                    id = info['entries'][0]['id']
+                    webpage_url = info['webpage_url']
+                    embed = discord.Embed(description = f'[1TV] Now playing: [{title}]({webpage_url}) [{author.mention}]', color = 0xbc03ff)
+                    embed.set_thumbnail(url = picture)
+                    embed.set_footer(text = "supports by quantsound")
+                    await ctx.send(embed = embed) 
+                
+                
                 else:
                     await message.delete()
                     message = await ctx.send('Ooops, your link is not suitable for more than one service. Please check your link and the list of available services, and try again...\n\nI play a lo fi stream')
