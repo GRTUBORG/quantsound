@@ -26,7 +26,7 @@ help_message = (':flag_ru:\n'
                 '\n\n'
                 ':flag_us:\n'
                 '**[West coast](http://the-radio.ru/radio/pvpjamz-west-coast-r637)**')
-update = '19.01.21'
+update = '20.01.21'
 youtube_dl.utils.bug_reports_message = lambda: ''
 
 intents = discord.Intents.all()
@@ -409,8 +409,8 @@ async def help(ctx):
     embed = discord.Embed(description = f'**Hello, {author.mention}! List of all commands:**\n'
                           f'• `{prefix}help` outputs the help command;\n'
                           f'• `{prefix}play` (aliases: `{prefix}p`) playback songs/streams. Arguments: the query or the reference, '
-                          'the available platforms: `youtube`, `twitch`, `rutube`, `pornhub`;\n'
-                          f'• `{prefix}radio` playing the radio. The radio list is available by command: `{prefix}radio help`;\n'
+                          f'the list of services is available by the command `{prefix}help_play`;\n'
+                          f'• `{prefix}radio` playing the radio. The radio list is available by command: `{prefix}help_radio`;\n'
                           f'• `{prefix}volume` changing the volume. Arguments: integer from 0 to 100;\n'
                           f'• `{prefix}pause` pause the current playback;\n'
                           f'• `{prefix}resume` continue playing;\n'
