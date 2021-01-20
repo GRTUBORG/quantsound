@@ -422,7 +422,7 @@ async def help(ctx):
                           f'• `{prefix}author` all information about the authors of quantsound;\n'
                           f'• `{prefix}donate` assistance to developers of the bot;\n'
                           f'• `{prefix}servers` find out information about servers. It works only on the home server and displays the number of servers on which the bot is installed.\n\n\n'
-                          '[Invite quantsound](https://discord.com/oauth2/authorize?client_id=795312210343624724&permissions=8&scope=bot) | [Support server](https://discord.gg/rjMDwaB)', color = 0xbc03ff)
+                          '[Invite quantsound](https://discord.com/oauth2/authorize?client_id=795312210343624724&permissions=8&scope=bot) | [Support server](https://discord.gg/MFGmBFjgXu)', color = 0xbc03ff)
     embed.set_author(name = "Quantsound Support", icon_url = "https://bit.ly/39w96yc")
     embed.set_footer(text = "supports by quantsound")
     await ctx.send(embed = embed)
