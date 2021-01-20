@@ -224,7 +224,7 @@ async def play(ctx, *, url, volume = 0.5):
             
             
 @Bot.command()
-async def radio(ctx, *, name = 'help', volume = 0.5):
+async def radio(ctx, *, name, volume = 0.5):
     try:
         message = ctx.message
         await message.add_reaction('📻')
@@ -387,13 +387,21 @@ async def stop(ctx):
         
 @Bot.command()
 async def help_play(ctx):
-    author = ctx.message.author
     embed = discord.Embed(title = 'List of available services', description = available_services)
     embed.set_footer(text = "supports by quantsound")
     message = await ctx.send(embed = embed)
     await asyncio.sleep(15)
     await message.delete()
-   
+
+    
+@Bot.command()
+async def help_radio(ctx):
+    embed = discord.Embed(title = 'List of available radio stations', description = help_message)
+    embed.set_footer(text = "supports by quantsound")
+    message = await ctx.send(embed = embed)
+    await asyncio.sleep(15)
+    await message.delete()
+    
   
 @Bot.command()
 async def help(ctx):
