@@ -190,7 +190,6 @@ async def play(ctx, *, url, volume = 0.5):
                 
                 
                 elif url[8:16] == 'www.1tv.':
-                    print(url[8:16])
                     info = ydl.extract_info(url, download = False)
                     URL = info['entries'][0]['formats'][0]['url']  
                     title = info['entries'][0]['title']
