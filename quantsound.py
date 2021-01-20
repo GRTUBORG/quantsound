@@ -17,6 +17,9 @@ from discord.utils import get
 YDL_OPTIONS = {'format': 'worstaudio/best', 'noplaylist': 'True', 'simulate': 'True', 'preferredquality': '192', 'preferredcodec': 'mp3', 'key': 'FFmpegExtractAudio', 'quiet': True}
 FFMPEG_OPTIONS = {'before_options': '-reconnect 1 -reconnect_streamed 1 -reconnect_delay_max 5', 'options': '-vn'}
 
+available_services = ('**[1tv](https://www.1tv.ru)**, **[Pornhub](https://rt.pornhub.com)**, ' 
+                      '**[YouTube](https://www.youtube.com)**, **[twitch](https://www.youtube.com)**')
+
 help_message = (':flag_ru:\n'
                 '**[Europe +](https://europaplus.ru)**, **[Radio Record](https://www.radiorecord.ru)**, '
                 '**[Record Deep](https://www.radiorecord.ru/station/deep)**, **[Radio Energy](https://www.energyfm.ru)**'
@@ -222,85 +225,78 @@ async def play(ctx, *, url, volume = 0.5):
             
 @Bot.command()
 async def radio(ctx, *, name = 'help', volume = 0.5):
-    if name == '--help' or name == 'help' or name == '' or name == ' ':
-        embed = discord.Embed(title = 'List of available radio stations', description = help_message)
+    try:
+        message = ctx.message
+        await message.add_reaction('📻')
+    except:
+        None
+
+    name = name.lower()
+    author = ctx.message.author
+
+    if name == 'европа +' or name == 'europe +' or name == 'европа плюс' or name == 'europe plus':
+        source = 'http://ep128.streamr.ru'
+        url = 'https://bit.ly/39gx54n'
+        embed = discord.Embed(description = f'Now playing: [Europe +](https://europaplus.ru) [{author.mention}]', color = 0xbc03ff)
+        embed.set_author(name = 'Radio', icon_url = url)
         embed.set_footer(text = "supports by quantsound")
-        message = await ctx.send(embed = embed)
-        await asyncio.sleep(15)
-        await message.delete()
+        await ctx.send(embed = embed)
+
+    elif name == 'радио рекорд' or name == 'radio record' or name == 'радио record' or name == 'record':
+        source = 'http://air2.radiorecord.ru:805/rr_320'
+        url = 'https://bit.ly/3hV2xcx'
+        embed = discord.Embed(description = f'Now playing: [Radio Record](https://www.radiorecord.ru) [{author.mention}]', color = 0xbc03ff)
+        embed.set_author(name = 'Radio', icon_url = url)
+        embed.set_footer(text = "supports by quantsound")
+        await ctx.send(embed = embed)
+
+    elif name == 'record deep' or name == 'deep' or name == 'радио deep' or name == 'radio deep':
+        source = 'http://air2.radiorecord.ru:805/deep_320'
+        url = 'https://bit.ly/3hYQPgX'
+        embed = discord.Embed(description = f'Now playing: [Record Deep](https://www.radiorecord.ru/station/deep) [{author.mention}]', color = 0xbc03ff)
+        embed.set_author(name = 'Radio', icon_url = url)
+        embed.set_footer(text = "supports by quantsound")
+        await ctx.send(embed = embed)
+
+    elif name == 'radio energy' or name == 'energy' or name == 'энерджи' or name == 'радио энерджи':
+        source = 'https://pub0302.101.ru:8443/stream/air/aac/64/99'
+        url = 'https://bit.ly/2JXXUlg'
+        embed = discord.Embed(description = f'Now playing: [Radio Energy](https://www.energyfm.ru) [{author.mention}]', color = 0xbc03ff)
+        embed.set_author(name = 'Radio', icon_url = url)
+        embed.set_footer(text = "supports by quantsound")
+        await ctx.send(embed = embed)
+
+    elif name == 'radio west' or name == 'west coast' or name == 'радио вест коаст' or name == 'вест коаст':
+        source = 'https://stream.pvpjamz.com/stream'
+        url = 'https://bit.ly/2LEv9L6'
+        embed = discord.Embed(description = f'Now playing: [Weat Coast](http://the-radio.ru/radio/pvpjamz-west-coast-r637) [{author.mention}]', color = 0xbc03ff)
+        embed.set_author(name = 'Radio', icon_url = url)
+        embed.set_footer(text = "supports by quantsound")
+        await ctx.send(embed = embed)
+
     else:
-        try:
-            message = ctx.message
-            await message.add_reaction('📻')
-        except:
-            None
-            
-        name = name.lower()
-        author = ctx.message.author
-    
-        if name == 'европа +' or name == 'europe +' or name == 'европа плюс' or name == 'europe plus':
-            source = 'http://ep128.streamr.ru'
-            url = 'https://bit.ly/39gx54n'
-            embed = discord.Embed(description = f'Now playing: [Europe +](https://europaplus.ru) [{author.mention}]', color = 0xbc03ff)
-            embed.set_author(name = 'Radio', icon_url = url)
-            embed.set_footer(text = "supports by quantsound")
-            await ctx.send(embed = embed)
+        message_invalid = await ctx.send('I caught an invalid request, I play the radio station `Europe +`')
+        source = 'http://ep128.streamr.ru'
+        url = 'https://bit.ly/39gx54n'
+        embed = discord.Embed(description = f'Now playing: [Europe +](https://europaplus.ru) [{author.mention}]', color = 0xbc03ff)
+        embed.set_author(name = 'Radio', icon_url = url)
+        embed.set_footer(text = "supports by quantsound")
+        await ctx.send(embed = embed)
 
-        elif name == 'радио рекорд' or name == 'radio record' or name == 'радио record' or name == 'record':
-            source = 'http://air2.radiorecord.ru:805/rr_320'
-            url = 'https://bit.ly/3hV2xcx'
-            embed = discord.Embed(description = f'Now playing: [Radio Record](https://www.radiorecord.ru) [{author.mention}]', color = 0xbc03ff)
-            embed.set_author(name = 'Radio', icon_url = url)
-            embed.set_footer(text = "supports by quantsound")
-            await ctx.send(embed = embed)
-            
-        elif name == 'record deep' or name == 'deep' or name == 'радио deep' or name == 'radio deep':
-            source = 'http://air2.radiorecord.ru:805/deep_320'
-            url = 'https://bit.ly/3hYQPgX'
-            embed = discord.Embed(description = f'Now playing: [Record Deep](https://www.radiorecord.ru/station/deep) [{author.mention}]', color = 0xbc03ff)
-            embed.set_author(name = 'Radio', icon_url = url)
-            embed.set_footer(text = "supports by quantsound")
-            await ctx.send(embed = embed)
+    voice_channel = ctx.message.author.voice.channel
+    vc = await voice_channel.connect(reconnect = True)
 
-        elif name == 'radio energy' or name == 'energy' or name == 'энерджи' or name == 'радио энерджи':
-            source = 'https://pub0302.101.ru:8443/stream/air/aac/64/99'
-            url = 'https://bit.ly/2JXXUlg'
-            embed = discord.Embed(description = f'Now playing: [Radio Energy](https://www.energyfm.ru) [{author.mention}]', color = 0xbc03ff)
-            embed.set_author(name = 'Radio', icon_url = url)
-            embed.set_footer(text = "supports by quantsound")
-            await ctx.send(embed = embed)
-            
-        elif name == 'radio west' or name == 'west coast' or name == 'радио вест коаст' or name == 'вест коаст':
-            source = 'https://stream.pvpjamz.com/stream'
-            url = 'https://bit.ly/2LEv9L6'
-            embed = discord.Embed(description = f'Now playing: [Weat Coast](http://the-radio.ru/radio/pvpjamz-west-coast-r637) [{author.mention}]', color = 0xbc03ff)
-            embed.set_author(name = 'Radio', icon_url = url)
-            embed.set_footer(text = "supports by quantsound")
-            await ctx.send(embed = embed)
+    vc.play(discord.FFmpegPCMAudio(executable = "/app/vendor/ffmpeg/ffmpeg", source = source, **FFMPEG_OPTIONS))
+    vc.source = discord.PCMVolumeTransformer(vc.source)
+    vc.source.volume = volume
 
-        else:
-            message_invalid = await ctx.send('I caught an invalid request, I play the radio station `Europe +`')
-            source = 'http://ep128.streamr.ru'
-            url = 'https://bit.ly/39gx54n'
-            embed = discord.Embed(description = f'Now playing: [Europe +](https://europaplus.ru) [{author.mention}]', color = 0xbc03ff)
-            embed.set_author(name = 'Radio', icon_url = url)
-            embed.set_footer(text = "supports by quantsound")
-            await ctx.send(embed = embed)
+    await asyncio.sleep(5)
+    await message_invalid.delete()
 
-        voice_channel = ctx.message.author.voice.channel
-        vc = await voice_channel.connect(reconnect = True)
-            
-        vc.play(discord.FFmpegPCMAudio(executable = "/app/vendor/ffmpeg/ffmpeg", source = source, **FFMPEG_OPTIONS))
-        vc.source = discord.PCMVolumeTransformer(vc.source)
-        vc.source.volume = volume
-        
-        await asyncio.sleep(5)
-        await message_invalid.delete()
-        
-        while length != 1:
-            await asyncio.sleep(1) 
-        else:
-            await ctx.voice_client.disconnect() 
+    while length != 1:
+        await asyncio.sleep(1) 
+    else:
+        await ctx.voice_client.disconnect() 
             
             
 @Bot.command()
@@ -389,6 +385,16 @@ async def stop(ctx):
         await message.delete()
 
         
+@Bot.command()
+async def help_play(ctx):
+    author = ctx.message.author
+    embed = discord.Embed(title = 'List of available services', description = available_services)
+    embed.set_footer(text = "supports by quantsound")
+    message = await ctx.send(embed = embed)
+    await asyncio.sleep(15)
+    await message.delete()
+   
+  
 @Bot.command()
 async def help(ctx):
     author = ctx.message.author
