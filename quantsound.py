@@ -18,7 +18,7 @@ YDL_OPTIONS = {'format': 'worstaudio/best', 'noplaylist': 'True', 'simulate': 'T
 FFMPEG_OPTIONS = {'before_options': '-reconnect 1 -reconnect_streamed 1 -reconnect_delay_max 5', 'options': '-vn'}
 
 available_services = ('**[1tv](https://www.1tv.ru)**, **[Pornhub](https://rt.pornhub.com)**, ' 
-                      '**[YouTube](https://www.youtube.com)**, **[twitch](https://www.youtube.com)**')
+                      '**[YouTube](https://www.youtube.com)**, **[twitch](https://www.twitch.tv)**')
 
 help_message = (':flag_ru:\n'
                 '**[Europe +](https://europaplus.ru)**, **[Radio Record](https://www.radiorecord.ru)**, '
