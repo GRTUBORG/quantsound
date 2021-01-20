@@ -196,7 +196,7 @@ async def play(ctx, *, url, volume = 0.5):
                     picture = info['entries'][0]['thumbnails'][0]['url']
                     id = info['entries'][0]['id']
                     webpage_url = info['webpage_url']
-                    embed = discord.Embed(description = f'[1TV] Now playing: [{title}]({webpage_url}) [{author.mention}]', color = 0xbc03ff)
+                    embed = discord.Embed(description = f'[1TV 1️⃣] Now playing: [{title}]({webpage_url}) [{author.mention}]', color = 0xbc03ff)
                     embed.set_thumbnail(url = picture)
                     embed.set_footer(text = "supports by quantsound")
                     await ctx.send(embed = embed) 
