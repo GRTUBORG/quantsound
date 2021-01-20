@@ -20,6 +20,9 @@ FFMPEG_OPTIONS = {'before_options': '-reconnect 1 -reconnect_streamed 1 -reconne
 available_services = ('**[1tv](https://www.1tv.ru)**, **[Pornhub](https://rt.pornhub.com)**, ' 
                       '**[YouTube](https://www.youtube.com)**, **[twitch](https://www.twitch.tv)**')
 
+yoomoney_url = os.environ.get('yoomoney_url')
+qiwi_url = os.environ.get('qiwi_url')
+
 help_message = (':flag_ru:\n'
                 '**[Europe +](https://europaplus.ru)**, **[Radio Record](https://www.radiorecord.ru)**, '
                 '**[Record Deep](https://www.radiorecord.ru/station/deep)**, **[Radio Energy](https://www.energyfm.ru)**'
@@ -442,8 +445,8 @@ async def donate(ctx):
                                         'Our bot is free for the Discord community, but our team will be grateful '
                                         'to you for donating absolutely any amount to the further development of **quantsound**\n\n'
                                         'Payment is available on several e-wallets:\n'
-                                        '• [QIWI](https://qiwi.com/n/OVERFLOW16),\n'
-                                        '• [ЮMoney](https://money.yandex.ru/to/410015133921329),\n\n'
+                                        f'• [QIWI]({qiwi_url}),\n'
+                                        f'• [ЮMoney]({yoomoney_url}),\n\n'
                                         '*Paypal* and *Webmoney* will also be available soon...\n\n'
                                         'Thank you for choosing us! \n🤍', color = 0xbc03ff)
     embed.set_author(name = "The donations page", icon_url = "https://bit.ly/39w96yc")
