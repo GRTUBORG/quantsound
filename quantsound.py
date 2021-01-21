@@ -464,16 +464,7 @@ async def servers(ctx):
         message = await ctx.send("You don't have access to this command! \nGo to the bot's home server to use this command!")
         await asyncio.sleep(5) 
         await message.delete()
-        
-@Bot.command()
-async def names(ctx):
-    if ctx.guild.id == 526097247285280768:
-        servers = Bot.guilds
-        await ctx.send(f'```{servers}```')
-    else:
-        message = await ctx.send("You don't have access to this command! \nGo to the bot's home server to use this command!")
-        await asyncio.sleep(5) 
-        await message.delete()
+       
 
         
 token = os.environ.get('bot_token')
