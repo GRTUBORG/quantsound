@@ -23,6 +23,7 @@ available_services = ('**[1tv](https://www.1tv.ru)**, **[Pornhub](https://rt.por
 yoomoney_url = os.environ.get('yoomoney_url')
 qiwi_url = os.environ.get('qiwi_url')
 vk_page = os.environ.get('vk_page')
+count_servers = os.environ.get('count_servers')
 
 help_message = (':flag_ru:\n'
                 '**[Europe +](https://europaplus.ru)**, **[Radio Record](https://www.radiorecord.ru)**, '
@@ -30,7 +31,7 @@ help_message = (':flag_ru:\n'
                 '\n\n'
                 ':flag_us:\n'
                 '**[West coast](http://the-radio.ru/radio/pvpjamz-west-coast-r637)**')
-update = '20.01.21'
+update = '26.01.21'
 youtube_dl.utils.bug_reports_message = lambda: ''
 
 intents = discord.Intents.all()
@@ -49,7 +50,7 @@ async def on_ready():
         await sleep(30)
         await Bot.change_presence(status = discord.Status.idle, activity = discord.Activity(type = discord.ActivityType.listening, name = f"latest update: {update}"))
         await sleep(5)
-        await Bot.change_presence(status = discord.Status.idle, activity = discord.Activity(type = discord.ActivityType.listening, name = f"12 servers!"))
+        await Bot.change_presence(status = discord.Status.idle, activity = discord.Activity(type = discord.ActivityType.listening, name = f"{count_servers} servers!"))
         await sleep(5)
 
 @Bot.event
