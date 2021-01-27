@@ -93,7 +93,7 @@ async def play(ctx, *, url, volume = 0.5):
         await message.delete()
     
     try:
-        vc = await voice_channel.connect()
+        vc = await voice_channel.connect(reconnect = True)
     except:
         None
         
