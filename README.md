@@ -5,7 +5,7 @@
 [![Discord](https://img.shields.io/discord/526097247285280768)](https://discord.gg/rjMDwaB)
 [![Issues](https://img.shields.io/bitbucket/issues/GRTUBORG/quantprod)](https://github.com/GRTUBORG/quantprod/issues)  
 
-Made by `♂dungeon master♂` and `•Satoemari•`  
+Made by `🌊аквадед🌊` and `•Satoemari•`  
 ## What can this bot do?
 #### The bot can play audio tracks from services such as:  
 * YouTube;  
