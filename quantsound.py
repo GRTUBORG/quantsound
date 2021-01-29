@@ -24,6 +24,8 @@ yoomoney_url = os.environ.get('yoomoney_url')
 qiwi_url = os.environ.get('qiwi_url')
 vk_page = os.environ.get('vk_page')
 count_servers = os.environ.get('count_servers')
+update = os.environ.get('update')
+token = os.environ.get('bot_token')
 
 help_message = (':flag_ru:\n'
                 '**[Europe +](https://europaplus.ru)**, **[Radio Record](https://www.radiorecord.ru)**, '
@@ -31,7 +33,7 @@ help_message = (':flag_ru:\n'
                 '\n\n'
                 ':flag_us:\n'
                 '**[West coast](http://the-radio.ru/radio/pvpjamz-west-coast-r637)**')
-update = '27.01.21'
+
 youtube_dl.utils.bug_reports_message = lambda: ''
 
 intents = discord.Intents.all()
@@ -467,6 +469,5 @@ async def servers(ctx):
         await message.delete()
        
 
-        
-token = os.environ.get('bot_token')
+
 Bot.run(str(token))
