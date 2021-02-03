@@ -7,12 +7,14 @@ import os
 import discord
 import youtube_dl
 import re
+import datetime
 
 from youtube_dl import YoutubeDL
 from asyncio import sleep
 from discord.ext import commands
 from discord.ext.commands import Bot
 from discord.utils import get
+from datetime import date, time, timedelta
 
 YDL_OPTIONS = {'format': 'worstaudio/best', 'noplaylist': 'True', 'simulate': 'True', 'preferredquality': '192', 'preferredcodec': 'mp3', 'key': 'FFmpegExtractAudio'}
 FFMPEG_OPTIONS = {'before_options': '-reconnect 1 -reconnect_streamed 1 -reconnect_delay_max 5', 'options': '-vn'}
@@ -41,19 +43,30 @@ prefix = "qs!"
 Bot = commands.Bot(command_prefix = prefix, intents = discord.Intents.all())
 Bot.remove_command('help')
 
-
+delta = datetime.timedelta(hours = 3, minutes = 0)
+t = (datetime.datetime.now(datetime.timezone.utc) + delta)
+nowtime = t.strftime("%H")
+nowtime = int(nowtime)
 
 
 @Bot.event
 async def on_ready():
     print('{0.user} в онлайне!'.format(Bot))
     while True:
-        await Bot.change_presence(status = discord.Status.idle, activity = discord.Activity(type = discord.ActivityType.listening, name = f"{prefix}help 🎶"))
-        await sleep(30)
-        await Bot.change_presence(status = discord.Status.idle, activity = discord.Activity(type = discord.ActivityType.listening, name = f"latest update: {update}"))
-        await sleep(5)
-        await Bot.change_presence(status = discord.Status.idle, activity = discord.Activity(type = discord.ActivityType.listening, name = f"{count_servers} servers!"))
-        await sleep(5)
+        if nowtime < 7 and nowtime > 1:
+            await Bot.change_presence(status = discord.Status.idle, activity = discord.Activity(type = discord.ActivityType.listening, name = f"{prefix}help 🎶"))
+            await sleep(30)
+            await Bot.change_presence(status = discord.Status.idle, activity = discord.Activity(type = discord.ActivityType.listening, name = f"latest update: {update}"))
+            await sleep(5)
+            await Bot.change_presence(status = discord.Status.idle, activity = discord.Activity(type = discord.ActivityType.listening, name = f"{count_servers} servers!"))
+            await sleep(5)
+        else:
+            await Bot.change_presence(activity = discord.Activity(type = discord.ActivityType.listening, name = f"{prefix}help 🎶"))
+            await sleep(30)
+            await Bot.change_presence(activity = discord.Activity(type = discord.ActivityType.listening, name = f"latest update: {update}"))
+            await sleep(5)
+            await Bot.change_presence(activity = discord.Activity(type = discord.ActivityType.listening, name = f"{count_servers} servers!"))
+            await sleep(5)
 
 @Bot.event
 async def on_voice_state_update(member, before, after):
