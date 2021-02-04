@@ -270,6 +270,14 @@ async def radio(ctx, *, name, volume = 0.5):
         embed.set_footer(text = "supports by quantsound")
         await ctx.send(embed = embed)
 
+    elif name == 'phonk' or name == 'фонк' or name == 'radio phonk':
+        source = 'https://bit.ly/3oMtrF7'
+        url = 'https://bit.ly/39O1QPw'
+        embed = discord.Embed(description = f'Now playing: [Phonk](https://101.ru/radio/user/865080) [{author.mention}]', color = 0xbc03ff)
+        embed.set_author(name = 'Radio', icon_url = url)
+        embed.set_footer(text = "supports by quantsound")
+        await ctx.send(embed = embed)
+        
     elif name == 'радио рекорд' or name == 'radio record' or name == 'радио record' or name == 'record':
         source = 'http://air2.radiorecord.ru:805/rr_320'
         url = 'https://i.ibb.co/7NjgCS7/record-image.png'
