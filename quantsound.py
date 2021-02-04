@@ -61,7 +61,6 @@ async def on_ready():
             await Bot.change_presence(status = discord.Status.idle, activity = discord.Activity(type = discord.ActivityType.listening, name = f"{count_servers} servers!"))
             await sleep(5)
             
-            print(nowtime, 1, type(nowtime))
         else:
             await Bot.change_presence(activity = discord.Activity(type = discord.ActivityType.listening, name = f"{prefix}help 🎶"))
             await sleep(30)
@@ -70,7 +69,6 @@ async def on_ready():
             await Bot.change_presence(activity = discord.Activity(type = discord.ActivityType.listening, name = f"{count_servers} servers!"))
             await sleep(5)
             
-            print(nowtime, 2, type(nowtime))
 
 @Bot.event
 async def on_voice_state_update(member, before, after):
@@ -297,7 +295,15 @@ async def radio(ctx, *, name, volume = 0.5):
         embed.set_author(name = 'Radio', icon_url = url)
         embed.set_footer(text = "supports by quantsound")
         await ctx.send(embed = embed)
-
+    
+    elif name == 'pirate station' or name == 'dnb' or name == 'record pirate station' or name == 'пиратская станция':
+        source = 'https://air.radiorecord.ru:805/ps_128'
+        url = 'https://bit.ly/3pP8jiK'
+        embed = discord.Embed(description = f'Now playing: [Record Pirate Station](https://www.radiorecord.ru) [{author.mention}]', color = 0xbc03ff)
+        embed.set_author(name = 'Radio', icon_url = url)
+        embed.set_footer(text = "supports by quantsound")
+        await ctx.send(embed = embed)
+    
     else:
         message_invalid = await ctx.send('I caught an invalid request, I play the radio station `Europe +`')
         source = 'http://ep128.streamr.ru'
