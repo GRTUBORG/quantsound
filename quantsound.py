@@ -52,7 +52,6 @@ async def on_ready():
         t = (datetime.datetime.now(datetime.timezone.utc) + delta)
         nowtime = t.strftime("%H")
         nowtime = int(nowtime)
-        print(nowtime)
         
         if nowtime < 7 and nowtime > 1:
             await Bot.change_presence(status = discord.Status.idle, activity = discord.Activity(type = discord.ActivityType.listening, name = f"{prefix}help 🎶"))
@@ -61,6 +60,8 @@ async def on_ready():
             await sleep(5)
             await Bot.change_presence(status = discord.Status.idle, activity = discord.Activity(type = discord.ActivityType.listening, name = f"{count_servers} servers!"))
             await sleep(5)
+            
+            print(nowtime, 1, type(nowtime))
         else:
             await Bot.change_presence(activity = discord.Activity(type = discord.ActivityType.listening, name = f"{prefix}help 🎶"))
             await sleep(30)
@@ -68,6 +69,8 @@ async def on_ready():
             await sleep(5)
             await Bot.change_presence(activity = discord.Activity(type = discord.ActivityType.listening, name = f"{count_servers} servers!"))
             await sleep(5)
+            
+            print(nowtime, 2, type(nowtime))
 
 @Bot.event
 async def on_voice_state_update(member, before, after):
