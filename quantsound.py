@@ -29,13 +29,9 @@ count_servers = os.environ.get('count_servers')
 update = os.environ.get('update')
 token = os.environ.get('bot_token')
 
-help_message = (':flag_ru:\n'
-                '**[Europe +](https://europaplus.ru)**, **[Radio Energy](https://www.energyfm.ru)**, **[CORE RADIO](https://coreradio.ru)**, **[Phonk](https://101.ru/radio/user/865080)**, **[Radio Record](https://www.radiorecord.ru)**, '
+help_message = ('**[Europe +](https://europaplus.ru)**, **[Radio Energy](https://www.energyfm.ru)**, **[West coast](http://the-radio.ru/radio/pvpjamz-west-coast-r637)**, **[CORE RADIO](https://coreradio.ru)**, **[Phonk](https://101.ru/radio/user/865080)**, **[Radio Record](https://www.radiorecord.ru)**, '
                 '**[Record Deep](https://www.radiorecord.ru/station/deep)**, **[Record Pirate Station](https://www.radiorecord.ru)**, **[Record Black Rap](https://www.radiorecord.ru)**, '
-                '**[Record Rock](https://www.radiorecord.ru)**, **[Record Trap](https://www.radiorecord.ru)**, **[Record Dubstep](https://www.radiorecord.ru)**'
-                '\n\n'
-                ':flag_us:\n'
-                '**[West coast](http://the-radio.ru/radio/pvpjamz-west-coast-r637)**')
+                '**[Record Rock](https://www.radiorecord.ru)**, **[Record Trap](https://www.radiorecord.ru)**, **[Record Dubstep](https://www.radiorecord.ru)**')
 
 youtube_dl.utils.bug_reports_message = lambda: ''
 
