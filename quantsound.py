@@ -267,7 +267,7 @@ async def radio(ctx, *, name, volume = 0.5):
 
     elif name == 'радио рекорд' or name == 'radio record' or name == 'радио record' or name == 'record':
         source = 'http://air2.radiorecord.ru:805/rr_320'
-        url = 'https://bit.ly/3hV2xcx'
+        url = 'https://i.ibb.co/7NjgCS7/record-image.png'
         embed = discord.Embed(description = f'Now playing: [Radio Record](https://www.radiorecord.ru) [{author.mention}]', color = 0xbc03ff)
         embed.set_author(name = 'Radio', icon_url = url)
         embed.set_footer(text = "supports by quantsound")
@@ -275,7 +275,7 @@ async def radio(ctx, *, name, volume = 0.5):
 
     elif name == 'record deep' or name == 'deep' or name == 'радио deep' or name == 'radio deep':
         source = 'http://air2.radiorecord.ru:805/deep_320'
-        url = 'https://bit.ly/3hYQPgX'
+        url = 'https://i.ibb.co/bm0kLDc/deep.png'
         embed = discord.Embed(description = f'Now playing: [Record Deep](https://www.radiorecord.ru/station/deep) [{author.mention}]', color = 0xbc03ff)
         embed.set_author(name = 'Radio', icon_url = url)
         embed.set_footer(text = "supports by quantsound")
@@ -291,7 +291,7 @@ async def radio(ctx, *, name, volume = 0.5):
 
     elif name == 'radio west' or name == 'west coast' or name == 'радио вест коаст' or name == 'вест коаст':
         source = 'https://stream.pvpjamz.com/stream'
-        url = 'https://bit.ly/2LEv9L6'
+        url = 'https://bit.ly/2LEv9L6' 
         embed = discord.Embed(description = f'Now playing: [Weat Coast](http://the-radio.ru/radio/pvpjamz-west-coast-r637) [{author.mention}]', color = 0xbc03ff)
         embed.set_author(name = 'Radio', icon_url = url)
         embed.set_footer(text = "supports by quantsound")
@@ -299,7 +299,7 @@ async def radio(ctx, *, name, volume = 0.5):
     
     elif name == 'pirate station' or name == 'dnb' or name == 'record pirate station' or name == 'пиратская станция':
         source = 'https://air.radiorecord.ru:805/ps_128'
-        url = 'https://bit.ly/3pP8jiK'
+        url = 'https://i.ibb.co/x1NMzxH/pirate-station.png'
         embed = discord.Embed(description = f'Now playing: [Record Pirate Station](https://www.radiorecord.ru) [{author.mention}]', color = 0xbc03ff)
         embed.set_author(name = 'Radio', icon_url = url)
         embed.set_footer(text = "supports by quantsound")
@@ -307,7 +307,7 @@ async def radio(ctx, *, name, volume = 0.5):
     
     elif name == 'black rap' or name == 'rap' or name == 'record black rap':
         source = 'https://air.radiorecord.ru:805/yo_128'
-        url = 'https://bit.ly/2YI45xB'
+        url = 'https://i.ibb.co/bPN6R49/black-rap.png'
         embed = discord.Embed(description = f'Now playing: [Record Black Rap](https://www.radiorecord.ru) [{author.mention}]', color = 0xbc03ff)
         embed.set_author(name = 'Radio', icon_url = url)
         embed.set_footer(text = "supports by quantsound")
@@ -315,7 +315,7 @@ async def radio(ctx, *, name, volume = 0.5):
         
     elif name == 'trap' or name == 'record trap':
         source = 'https://air.radiorecord.ru:805/trap_128'
-        url = 'https://bit.ly/3az4aJC'
+        url = 'https://i.ibb.co/f0DGsG2/trap.png' 
         embed = discord.Embed(description = f'Now playing: [Record Trap](https://www.radiorecord.ru) [{author.mention}]', color = 0xbc03ff)
         embed.set_author(name = 'Radio', icon_url = url)
         embed.set_footer(text = "supports by quantsound")
@@ -323,7 +323,7 @@ async def radio(ctx, *, name, volume = 0.5):
         
     elif name == 'rock' or name == 'record rock':
         source = 'https://air.radiorecord.ru:805/rock_128'
-        url = 'https://bit.ly/3pJg2iq'
+        url = 'https://i.ibb.co/JWLVFTz/rock.png'
         embed = discord.Embed(description = f'Now playing: [Record Rock](https://www.radiorecord.ru) [{author.mention}]', color = 0xbc03ff)
         embed.set_author(name = 'Radio', icon_url = url)
         embed.set_footer(text = "supports by quantsound")
@@ -331,7 +331,7 @@ async def radio(ctx, *, name, volume = 0.5):
         
     elif name == 'dubstep' or name == 'record dubstep':
         source = 'https://air.radiorecord.ru:805/dub_128'
-        url = 'https://bit.ly/3rmmfRW'
+        url = 'https://i.ibb.co/kmqtvn3/dubstep.png'
         embed = discord.Embed(description = f'Now playing: [Record Dubstep](https://www.radiorecord.ru) [{author.mention}]', color = 0xbc03ff)
         embed.set_author(name = 'Radio', icon_url = url)
         embed.set_footer(text = "supports by quantsound")
@@ -345,6 +345,14 @@ async def radio(ctx, *, name, volume = 0.5):
         embed.set_footer(text = "supports by quantsound")
         await ctx.send(embed = embed)
         
+    elif name == 'dnb classic' or name == 'record dnb classic':
+        source = 'https://air.radiorecord.ru:805/drumhits_128' 
+        url = 'https://i.ibb.co/PZTPFyd/dnb-classic-icon.png'
+        embed = discord.Embed(description = f'Now playing: [CORE RADIO](https://coreradio.ru) [{author.mention}] \n\n⚠️ At this radio, the stream freezes a little at the very beginning, I advise you to wait 15 seconds...', color = 0xbc03ff)
+        embed.set_author(name = 'Radio', icon_url = url)
+        embed.set_footer(text = "supports by quantsound")
+        await ctx.send(embed = embed)
+    
     else:
         message_invalid = await ctx.send('I caught an invalid request, I play the radio station `Europe +`')
         source = 'http://ep128.streamr.ru'
