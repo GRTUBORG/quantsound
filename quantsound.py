@@ -30,8 +30,8 @@ update = os.environ.get('update')
 token = os.environ.get('bot_token')
 
 help_message = (':flag_ru:\n'
-                '**[Europe +](https://europaplus.ru)**, **[Radio Record](https://www.radiorecord.ru)**, '
-                '**[Record Deep](https://www.radiorecord.ru/station/deep)**, **[Radio Energy](https://www.energyfm.ru)**'
+                '**[Europe +](https://europaplus.ru)**, **[Radio Energy](https://www.energyfm.ru)**, **[Radio Record](https://www.radiorecord.ru)**, '
+                '**[Record Deep](https://www.radiorecord.ru/station/deep)**, **[Record Pirate Station](https://www.radiorecord.ru)**, **[Record Black Rap](https://www.radiorecord.ru)**'
                 '\n\n'
                 ':flag_us:\n'
                 '**[West coast](http://the-radio.ru/radio/pvpjamz-west-coast-r637)**')
