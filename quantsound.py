@@ -53,7 +53,6 @@ async def on_ready():
         t = (datetime.datetime.now(datetime.timezone.utc) + delta)
         nowtime = t.strftime("%H")
         nowtime = int(nowtime)
-        print(nowtime)
         
         if nowtime >= 21 or nowtime <= 7:
             await Bot.change_presence(status = discord.Status.idle, activity = discord.Activity(type = discord.ActivityType.listening, name = f"{prefix}help 🎶"))
@@ -130,13 +129,16 @@ async def play(ctx, *, url, volume = 0.5):
         if correct_url != correct_url1:
             with YoutubeDL(YDL_OPTIONS) as ydl:
                 info = ydl.extract_info(f'ytsearch:{url}', download = False)
+                
+                duration = info['entries'][0]['duration']
+                duration = datetime.timedelta(seconds = duration)
                 URL = info['entries'][0]['formats'][0]['url']
                 title = info['entries'][0]['title']
                 id = info['entries'][0]['id']
                 picture = info['entries'][0]['thumbnails'][0]['url']
                 
                 await message.delete()
-                embed = discord.Embed(description = f'[YOUTUBE 🎬] Now playing: [{title}](https://www.youtube.com/watch?v={id}) [{author.mention}]', color = 0xbc03ff)
+                embed = discord.Embed(description = f'[YOUTUBE 🎬] Now playing: [{title}](https://www.youtube.com/watch?v={id}) (**{duration}**) [{author.mention}]', color = 0xbc03ff)
                 embed.set_thumbnail(url = picture)
                 embed.set_footer(text = "supports by quantsound")
                 await ctx.send(embed = embed) 
@@ -160,13 +162,15 @@ async def play(ctx, *, url, volume = 0.5):
                     
                 elif url[8:20] == 'www.youtube.': 
                     info = ydl.extract_info(url, download = False)
-
+                    
+                    duration = info['duration']
+                    duration = datetime.timedelta(seconds = duration)
                     URL = info['formats'][0]['url']
                     title = info['title']
                     id = info['id']
 
                     await message.delete()
-                    embed = discord.Embed(description = f'[YOUTUBE 🎬] Now playing: [{title}](https://www.youtube.com/watch?v={id}) [{author.mention}]', color = 0xbc03ff)
+                    embed = discord.Embed(description = f'[YOUTUBE 🎬] Now playing: [{title}](https://www.youtube.com/watch?v={id}) (**{duration}**) [{author.mention}]', color = 0xbc03ff)
                     embed.set_footer(text = "supports by quantsound")
                     await ctx.send(embed = embed)  
                 
