@@ -304,6 +304,14 @@ async def radio(ctx, *, name, volume = 0.5):
         embed.set_footer(text = "supports by quantsound")
         await ctx.send(embed = embed)
     
+    elif name == 'black rap' or name == 'rap' or name == 'record black rap':
+        source = 'https://air.radiorecord.ru:805/yo_128'
+        url = 'https://bit.ly/2YI45xB'
+        embed = discord.Embed(description = f'Now playing: [Record Black Rap](https://www.radiorecord.ru) [{author.mention}]', color = 0xbc03ff)
+        embed.set_author(name = 'Radio', icon_url = url)
+        embed.set_footer(text = "supports by quantsound")
+        await ctx.send(embed = embed)
+        
     else:
         message_invalid = await ctx.send('I caught an invalid request, I play the radio station `Europe +`')
         source = 'http://ep128.streamr.ru'
