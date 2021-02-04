@@ -32,7 +32,7 @@ token = os.environ.get('bot_token')
 help_message = (':flag_ru:\n'
                 '**[Europe +](https://europaplus.ru)**, **[Radio Energy](https://www.energyfm.ru)**, **[Radio Record](https://www.radiorecord.ru)**, '
                 '**[Record Deep](https://www.radiorecord.ru/station/deep)**, **[Record Pirate Station](https://www.radiorecord.ru)**, **[Record Black Rap](https://www.radiorecord.ru)**, '
-                '**[Record Rock](https://www.radiorecord.ru)**, **[Record Trap](https://www.radiorecord.ru)**'
+                '**[Record Rock](https://www.radiorecord.ru)**, **[Record Trap](https://www.radiorecord.ru)**, **[Record Dubstep](https://www.radiorecord.ru)**'
                 '\n\n'
                 ':flag_us:\n'
                 '**[West coast](http://the-radio.ru/radio/pvpjamz-west-coast-r637)**')
@@ -329,6 +329,14 @@ async def radio(ctx, *, name, volume = 0.5):
         embed.set_footer(text = "supports by quantsound")
         await ctx.send(embed = embed)
         
+    elif name == 'dubstep' or name == 'record dubstep':
+        source = 'https://air.radiorecord.ru:805/dub_128'
+        url = 'https://bit.ly/3rmmfRW'
+        embed = discord.Embed(description = f'Now playing: [Record Dubstep](https://www.radiorecord.ru) [{author.mention}]', color = 0xbc03ff)
+        embed.set_author(name = 'Radio', icon_url = url)
+        embed.set_footer(text = "supports by quantsound")
+        await ctx.send(embed = embed)
+    
     else:
         message_invalid = await ctx.send('I caught an invalid request, I play the radio station `Europe +`')
         source = 'http://ep128.streamr.ru'
