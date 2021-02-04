@@ -340,7 +340,7 @@ async def radio(ctx, *, name, volume = 0.5):
     elif name == 'core' or name == 'core radio':
         source = 'https://music.coreradio.ru/radio'
         url = 'https://bit.ly/2O6UcYk'
-        embed = discord.Embed(description = f'Now playing: [CORE RADIO](https://coreradio.ru) [{author.mention}]', color = 0xbc03ff)
+        embed = discord.Embed(description = f'Now playing: [CORE RADIO](https://coreradio.ru) [{author.mention}] \n\n⚠️ At this radio, the stream freezes a little at the very beginning, I advise you to wait 15 seconds...', color = 0xbc03ff)
         embed.set_author(name = 'Radio', icon_url = url)
         embed.set_footer(text = "supports by quantsound")
         await ctx.send(embed = embed)
