@@ -54,7 +54,7 @@ async def on_ready():
         nowtime = t.strftime("%H")
         nowtime = int(nowtime)
         
-        if nowtime <= 7 and nowtime >= 21:
+        if nowtime <= 7 or nowtime >= 21:
             await Bot.change_presence(status = discord.Status.idle, activity = discord.Activity(type = discord.ActivityType.listening, name = f"{prefix}help 🎶"))
             await sleep(30)
             await Bot.change_presence(status = discord.Status.idle, activity = discord.Activity(type = discord.ActivityType.listening, name = f"latest update: {update}"))
