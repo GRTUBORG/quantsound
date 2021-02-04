@@ -44,15 +44,15 @@ Bot = commands.Bot(command_prefix = prefix, intents = discord.Intents.all())
 Bot.remove_command('help')
 
 delta = datetime.timedelta(hours = 3, minutes = 0)
-t = (datetime.datetime.now(datetime.timezone.utc) + delta)
-nowtime = t.strftime("%H")
-nowtime = int(nowtime)
-
 
 @Bot.event
 async def on_ready():
     print('{0.user} в онлайне!'.format(Bot))
     while True:
+        t = (datetime.datetime.now(datetime.timezone.utc) + delta)
+        nowtime = t.strftime("%H")
+        nowtime = int(nowtime)
+        
         if nowtime < 7 and nowtime > 1:
             await Bot.change_presence(status = discord.Status.idle, activity = discord.Activity(type = discord.ActivityType.listening, name = f"{prefix}help 🎶"))
             await sleep(30)
