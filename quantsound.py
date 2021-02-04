@@ -31,7 +31,8 @@ token = os.environ.get('bot_token')
 
 help_message = (':flag_ru:\n'
                 '**[Europe +](https://europaplus.ru)**, **[Radio Energy](https://www.energyfm.ru)**, **[Radio Record](https://www.radiorecord.ru)**, '
-                '**[Record Deep](https://www.radiorecord.ru/station/deep)**, **[Record Pirate Station](https://www.radiorecord.ru)**, **[Record Black Rap](https://www.radiorecord.ru)**'
+                '**[Record Deep](https://www.radiorecord.ru/station/deep)**, **[Record Pirate Station](https://www.radiorecord.ru)**, **[Record Black Rap](https://www.radiorecord.ru)**, '
+                '**[Record Rock](https://www.radiorecord.ru)**, **[Record Trap](https://www.radiorecord.ru)**'
                 '\n\n'
                 ':flag_us:\n'
                 '**[West coast](http://the-radio.ru/radio/pvpjamz-west-coast-r637)**')
@@ -315,7 +316,15 @@ async def radio(ctx, *, name, volume = 0.5):
     elif name == 'trap' or name == 'record trap':
         source = 'https://air.radiorecord.ru:805/trap_128'
         url = 'https://bit.ly/3az4aJC'
-        embed = discord.Embed(description = f'Now playing: [Record Black Rap](https://www.radiorecord.ru) [{author.mention}]', color = 0xbc03ff)
+        embed = discord.Embed(description = f'Now playing: [Record Trap](https://www.radiorecord.ru) [{author.mention}]', color = 0xbc03ff)
+        embed.set_author(name = 'Radio', icon_url = url)
+        embed.set_footer(text = "supports by quantsound")
+        await ctx.send(embed = embed)
+        
+    elif name == 'rock' or name == 'record rock':
+        source = 'https://air.radiorecord.ru:805/rock_128'
+        url = 'https://bit.ly/3pJg2iq'
+        embed = discord.Embed(description = f'Now playing: [Record Rock](https://www.radiorecord.ru) [{author.mention}]', color = 0xbc03ff)
         embed.set_author(name = 'Radio', icon_url = url)
         embed.set_footer(text = "supports by quantsound")
         await ctx.send(embed = embed)
