@@ -43,7 +43,7 @@ prefix = "qs!"
 Bot = commands.Bot(command_prefix = prefix, intents = discord.Intents.all())
 Bot.remove_command('help')
 
-delta = datetime.timedelta(hours = 3, minutes = 0)
+delta = datetime.timedelta(hours = -3, minutes = 0)
 
 @Bot.event
 async def on_ready():
