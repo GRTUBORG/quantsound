@@ -30,9 +30,9 @@ update = os.environ.get('update')
 token = os.environ.get('bot_token')
 
 help_message = (':radio:\n'
-                '**[Europe +](https://europaplus.ru)**, **[Radio Energy](https://www.energyfm.ru)**, **[West coast](http://the-radio.ru/radio/pvpjamz-west-coast-r637)**, **[CORE RADIO](https://coreradio.ru)**, **[Phonk](https://101.ru/radio/user/865080)**, **[Radio Record](https://www.radiorecord.ru)**, '
-                '**[Record Deep](https://www.radiorecord.ru/station/deep)**, **[Record Pirate Station](https://www.radiorecord.ru)**, **[Record Black Rap](https://www.radiorecord.ru)**, '
-                '**[Record Rock](https://www.radiorecord.ru)**, **[Record Trap](https://www.radiorecord.ru)**, **[Record Dubstep](https://www.radiorecord.ru)**')
+                '**• [Europe +](https://europaplus.ru)** (different), \n**• [Radio Energy](https://www.energyfm.ru)** (different), \n**• [West coast](http://the-radio.ru/radio/pvpjamz-west-coast-r637)** (rap), \n**• [CORE RADIO](https://coreradio.ru)** (rock), \n**• [Phonk](https://101.ru/radio/user/865080)** (memphis rap), \n**• [Radio Record](https://www.radiorecord.ru)**(different),'
+                '\n**• [Record Deep](https://www.radiorecord.ru/station/deep)** (deep house), \n**• [Record Pirate Station](https://www.radiorecord.ru)** (drum and bass), \n**• [Record Black Rap](https://www.radiorecord.ru)** (rap), '
+                '\n**• [Record Rock](https://www.radiorecord.ru)** (rock), \n**• [Record Trap](https://www.radiorecord.ru)** (trap), \n**• [Record Dubstep](https://www.radiorecord.ru)** (dubstep)')
 
 youtube_dl.utils.bug_reports_message = lambda: ''
 
