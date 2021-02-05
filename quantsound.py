@@ -32,7 +32,7 @@ token = os.environ.get('bot_token')
 help_message = (':radio:\n'
                 '**• [Europe +](https://europaplus.ru)** (different), \n**• [Radio Energy](https://www.energyfm.ru)** (different), \n**• [West coast](http://the-radio.ru/radio/pvpjamz-west-coast-r637)** (rap), \n**• [CORE RADIO](https://coreradio.ru)** (rock), \n**• [Phonk](https://101.ru/radio/user/865080)** (memphis rap), \n**• [Record](https://www.radiorecord.ru)** (different),'
                 '\n**• [Record Deep](https://www.radiorecord.ru/station/deep)** (deep house), \n**• [Record Pirate Station](https://www.radiorecord.ru)** (drum and bass), \n**• [Record Black Rap](https://www.radiorecord.ru)** (rap), '
-                '\n**• [Record Rock](https://www.radiorecord.ru)** (rock), \n**• [Record Trap](https://www.radiorecord.ru)** (trap), \n**• [Record Dubstep](https://www.radiorecord.ru)** (dubstep)')
+                '\n**• [Record Rock](https://www.radiorecord.ru)** (rock), \n**• [Record Trap](https://www.radiorecord.ru)** (trap), \n**• [Record Dubstep](https://www.radiorecord.ru)** (dubstep), \n**• [Record Rave FM](https://www.radiorecord.ru)** (rave)')
 
 youtube_dl.utils.bug_reports_message = lambda: ''
 
@@ -358,7 +358,15 @@ async def radio(ctx, *, name, volume = 0.5):
     elif name == 'dnb classic' or name == 'record dnb classic':
         source = 'https://air.radiorecord.ru:805/drumhits_128' 
         url = 'https://i.ibb.co/PZTPFyd/dnb-classic-icon.png'
-        embed = discord.Embed(description = f'Now playing: [CORE RADIO](https://coreradio.ru) [{author.mention}] \n\n⚠️ At this radio, the stream freezes a little at the very beginning, I advise you to wait 15 seconds...', color = 0xbc03ff)
+        embed = discord.Embed(description = f'Now playing: [CORE RADIO](https://coreradio.ru) [{author.mention}]', color = 0xbc03ff)
+        embed.set_author(name = 'Radio', icon_url = url)
+        embed.set_footer(text = "supports by quantsound")
+        await ctx.send(embed = embed)
+    
+    elif name == 'rave' or name == 'rave fm' or name == 'рейв' or name == 'rave fm':
+        source = 'https://air.radiorecord.ru:805/rave_128'
+        url = 'https://bit.ly/2YMGc8b'
+        embed = discord.Embed(description = f'Now playing: [Record Rave FM](https://coreradio.ru) [{author.mention}]', color = 0xbc03ff)
         embed.set_author(name = 'Radio', icon_url = url)
         embed.set_footer(text = "supports by quantsound")
         await ctx.send(embed = embed)
