@@ -29,8 +29,9 @@ count_servers = os.environ.get('count_servers')
 update = os.environ.get('update')
 token = os.environ.get('bot_token')
 
-help_message = (':radio:\n'
-                '**• [Europe +](https://europaplus.ru)** (different), \n**• [Radio Energy](https://www.energyfm.ru)** (different), \n**• [West coast](http://the-radio.ru/radio/pvpjamz-west-coast-r637)** (rap), \n**• [CORE RADIO](https://coreradio.ru)** (rock), \n**• [Phonk](https://101.ru/radio/user/865080)** (memphis rap), \n**• [Record](https://www.radiorecord.ru)** (different),'
+help_message = (':radio: **total radio stations:** `13`'
+                '\n**• [Europe +](https://europaplus.ru)** (different), \n**• [Radio Energy](https://www.energyfm.ru)** (different), \n**• [West coast](http://the-radio.ru/radio/pvpjamz-west-coast-r637)** (rap), \n**• [CORE RADIO](https://coreradio.ru)** (rock), '
+                '\n**• [Phonk](https://101.ru/radio/user/865080)** (memphis rap), \n**• [Record](https://www.radiorecord.ru)** (different),'
                 '\n**• [Record Deep](https://www.radiorecord.ru/station/deep)** (deep house), \n**• [Record Pirate Station](https://www.radiorecord.ru)** (drum and bass), \n**• [Record Black Rap](https://www.radiorecord.ru)** (rap), '
                 '\n**• [Record Rock](https://www.radiorecord.ru)** (rock), \n**• [Record Trap](https://www.radiorecord.ru)** (trap), \n**• [Record Dubstep](https://www.radiorecord.ru)** (dubstep), \n**• [Record Rave FM](https://www.radiorecord.ru)** (rave)')
 
@@ -47,26 +48,13 @@ delta = datetime.timedelta(hours = 3, minutes = 0)
 async def on_ready():
     print('{0.user} в онлайне!'.format(Bot))
     while True:
-        t = (datetime.datetime.now(datetime.timezone.utc) + delta)
-        nowtime = t.strftime("%H")
-        nowtime = int(nowtime)
-        
-        if nowtime >= 21 or nowtime <= 7:
-            await Bot.change_presence(status = discord.Status.idle, activity = discord.Activity(type = discord.ActivityType.listening, name = f"{prefix}help 🎶"))
-            await sleep(30)
-            await Bot.change_presence(status = discord.Status.idle, activity = discord.Activity(type = discord.ActivityType.listening, name = f"latest update: {update}"))
-            await sleep(5)
-            await Bot.change_presence(status = discord.Status.idle, activity = discord.Activity(type = discord.ActivityType.listening, name = f"{count_servers} servers!"))
-            await sleep(5)
-            
-        else:
-            await Bot.change_presence(activity = discord.Activity(type = discord.ActivityType.listening, name = f"{prefix}help 🎶"))
-            await sleep(30)
-            await Bot.change_presence(activity = discord.Activity(type = discord.ActivityType.listening, name = f"latest update: {update}"))
-            await sleep(5)
-            await Bot.change_presence(activity = discord.Activity(type = discord.ActivityType.listening, name = f"{count_servers} servers!"))
-            await sleep(5)
-            
+        await Bot.change_presence(status = discord.Status.idle, activity = discord.Activity(type = discord.ActivityType.listening, name = f"{prefix}help 🎶"))
+        await sleep(30)
+        await Bot.change_presence(status = discord.Status.idle, activity = discord.Activity(type = discord.ActivityType.listening, name = f"latest update: {update}"))
+        await sleep(5)
+        await Bot.change_presence(status = discord.Status.idle, activity = discord.Activity(type = discord.ActivityType.listening, name = f"{count_servers} servers!"))
+        await sleep(5)
+
 
 @Bot.event
 async def on_voice_state_update(member, before, after):
